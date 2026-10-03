@@ -1,24 +1,70 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Header } from "@/components/site/Header";
+import { Hero, TrustBar, About, Services, BeforeAfter, HowItWorks, ServiceArea, Testimonials, Gallery, WhyUs } from "@/components/site/Sections";
+import { QuoteForm } from "@/components/site/QuoteForm";
+import { FAQ, FinalCTA, Footer } from "@/components/site/Closing";
+import { business, faqs } from "@/content/site";
+import { useReveal } from "@/hooks/use-reveal";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "FreshSpace Cleaning Co. | House & Office Cleaning in Austin, TX";
+const description = "Reliable residential and commercial cleaning in Austin and nearby areas. Insured, background-checked team and flexible scheduling. Get a free quote.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HouseCleaningService",
+  name: business.name,
+  telephone: business.phone,
+  email: business.email,
+  areaServed: business.areas,
+  address: { "@type": "PostalAddress", addressLocality: business.city, addressRegion: business.region, addressCountry: "US" },
+  openingHours: "Mo-Sa 08:00-18:00",
+};
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(jsonLd) },
+      { type: "application/ld+json", children: JSON.stringify(faqLd) },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  useReveal();
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-navy focus:px-4 focus:py-2 focus:text-navy-foreground">Skip to content</a>
+      <Header />
+      <main id="main">
+        <Hero />
+        <TrustBar />
+        <About />
+        <Services />
+        <BeforeAfter />
+        <HowItWorks />
+        <ServiceArea />
+        <Testimonials />
+        <Gallery />
+        <WhyUs />
+        <QuoteForm />
+        <FAQ />
+        <FinalCTA />
+      </main>
+      <Footer />
+    </>
   );
 }
