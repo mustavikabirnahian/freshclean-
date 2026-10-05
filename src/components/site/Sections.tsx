@@ -34,76 +34,7 @@ function SectionHead({ eyebrow, title, sub, center = true }: { eyebrow?: string;
   );
 }
 
-/* HERO */
-export function Hero() {
-  return (
-    <section id="top" className="relative overflow-hidden bg-surface pb-16 pt-10 md:pb-24 md:pt-16">
-      <div className="container-site grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-10">
-        <div className="relative z-10">
-          <p className="eyebrow">Residential & Commercial Cleaning</p>
-          <h1 className="mt-4 text-[2.6rem] font-medium leading-[1.05] text-navy sm:text-6xl lg:text-[4.25rem]">
-            A Cleaner Space.<br /><span className="italic text-sky">A Healthier You.</span>
-          </h1>
-          <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
-            Reliable residential and commercial cleaning services designed around your schedule. We take care of the mess so you can focus on what matters.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href="#quote" className="group inline-flex items-center justify-center gap-2 rounded-full bg-sky px-7 py-4 font-semibold text-primary-foreground shadow-lift transition hover:bg-navy">
-              Get a Free Quote <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
-            <a href="#services" className="inline-flex items-center justify-center rounded-full border border-input bg-background px-7 py-4 font-semibold text-navy transition hover:border-navy">
-              Explore Services
-            </a>
-          </div>
-          <div className="mt-8 flex items-center gap-3">
-            <Stars />
-            <span className="text-sm text-muted-foreground">Trusted by local homeowners & businesses</span>
-          </div>
-        </div>
-
-        <div className="relative">
-          <div className="absolute -right-6 -top-6 hidden h-full w-full rounded-[1.75rem] bg-sky-soft lg:block" aria-hidden />
-          <div className="relative overflow-hidden rounded-[1.5rem] shadow-float">
-            <img src={hero} alt="Bright, freshly cleaned open-plan living room and kitchen" width={1600} height={1104} fetchPriority="high" className="aspect-[4/3] w-full object-cover lg:aspect-[5/4.4]" />
-          </div>
-          <div className="absolute -bottom-6 left-4 right-4 rounded-2xl border bg-background/95 p-4 shadow-float backdrop-blur sm:left-auto sm:right-6 sm:w-72 md:-left-8 md:right-auto lg:-left-12">
-            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Next available</p>
-            <p className="mt-1 font-display text-lg text-navy">Standard home clean</p>
-            <div className="mt-3 flex items-center justify-between gap-3">
-              <span className="flex items-center gap-1.5 text-sm text-muted-foreground"><CalendarClock className="h-4 w-4 text-sky" />This week</span>
-              <a href="#quote" className="rounded-full bg-navy px-3.5 py-1.5 text-xs font-semibold text-navy-foreground hover:bg-sky">Request quote</a>
-            </div>
-          </div>
-          <div className="absolute right-4 top-4 hidden items-center gap-2 rounded-full bg-background/95 px-3.5 py-2 text-sm font-medium text-navy shadow-lift sm:flex">
-            <ShieldCheck className="h-4 w-4 text-leaf" /> Fully insured
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* TRUST BAR */
-const trust = [
-  { icon: ShieldCheck, label: "Fully Insured" },
-  { icon: UserCheck, label: "Background-Checked Team" },
-  { icon: CalendarClock, label: "Flexible Scheduling" },
-  { icon: BadgeCheck, label: "Satisfaction Guaranteed" },
-];
-export function TrustBar() {
-  return (
-    <section aria-label="Why customers trust us" className="border-y bg-background">
-      <ul className="container-site grid grid-cols-2 gap-y-6 py-8 md:grid-cols-4">
-        {trust.map(({ icon: I, label }) => (
-          <li key={label} className="flex items-center gap-3 md:justify-center">
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-leaf-soft text-leaf"><I className="h-5 w-5" strokeWidth={1.6} /></span>
-            <span className="text-sm font-medium text-navy sm:text-[15px]">{label}</span>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-}
+export { Hero, TrustBar } from "./Hero";
 
 /* ABOUT */
 export function About() {
