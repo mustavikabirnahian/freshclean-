@@ -37,7 +37,7 @@ export function QuoteForm() {
       const errs: Errors = {};
       res.error.issues.forEach((i) => { errs[i.path[0] as keyof Errors] ??= i.message; });
       setErrors(errs);
-      const first = e.currentTarget.querySelector<HTMLElement>(`[name="${res.error.issues[0].path[0]}"]`);
+      const first = e.currentTarget.querySelector<HTMLElement>(`[name="${String(res.error.issues[0]?.path[0] ?? "")}"]`);
       first?.focus();
       return;
     }
