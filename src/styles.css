@@ -39,6 +39,10 @@
   --color-leaf: var(--leaf);
   --color-leaf-soft: var(--leaf-soft);
   --color-star: var(--star);
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-gray: var(--brand-gray);
   --color-surface: var(--surface);
   --shadow-soft: var(--shadow-soft);
   --shadow-lift: var(--shadow-lift);
@@ -64,6 +68,10 @@
   --leaf: oklch(0.58 0.11 160);
   --leaf-soft: oklch(0.95 0.035 160);
   --star: oklch(0.78 0.15 75);
+  --brand-navy: #0B2A4A;
+  --brand-blue: #1683D8;
+  --brand-soft: #EAF5FC;
+  --brand-gray: #F6F8FA;
   --secondary: oklch(0.96 0.008 250);
   --secondary-foreground: oklch(0.26 0.06 258);
   --muted: oklch(0.96 0.006 250);
@@ -121,6 +129,11 @@
   transition: transform 300ms ease, box-shadow 300ms ease;
   &:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
 }
+
+@keyframes hero-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes hero-fade { from { opacity: 0; transform: scale(1.015); } to { opacity: 1; transform: none; } }
+@utility hero-in { animation: hero-up 500ms ease-out both; }
+@utility hero-img { animation: hero-fade 700ms ease-out 100ms both; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
