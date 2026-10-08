@@ -10,6 +10,8 @@ export const business = {
   reviewCount: null as number | null,
   heroAreas: ["Austin", "Round Rock", "Cedar Park", "Pflugerville"],
   primaryCTA: { label: "Get a Free Quote", href: "#quote" },
+  secondaryCTA: { label: "Explore Services", href: "#services" },
+  heroImage: "about-cleaner.jpg", // file in src/assets used by the hero (see Hero.tsx import)
   email: "hello@freshspacecleaning.com", // placeholder
   city: "Austin",
   region: "TX",
