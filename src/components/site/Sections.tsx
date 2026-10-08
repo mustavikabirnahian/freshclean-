@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from "react";
 import {
-  ArrowRight, Star, ShieldCheck, UserCheck, CalendarClock, BadgeCheck, Check,
+  ArrowRight, Star, ShieldCheck, UserCheck, CalendarClock, BadgeCheck, Check, CheckCircle2,
   ClipboardList, CalendarDays, Sparkles, MapPin, Search, Clock, MousePointerClick, ChevronsLeftRight,
 } from "lucide-react";
 import { business, testimonials } from "@/content/site";
