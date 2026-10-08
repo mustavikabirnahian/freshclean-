@@ -1,6 +1,7 @@
 import { ArrowRight, Phone, MapPin, Star, ShieldCheck, UserCheck, CalendarClock, BadgeCheck } from "lucide-react";
 import { business, trustItems } from "@/content/site";
-import heroImage from "@/assets/about-cleaner.jpg";
+// Hero photo — swap this import to change the image.
+import heroImage from "@/assets/hero-cleaner.jpg";
 
 const trustIcons = { insured: ShieldCheck, checked: UserCheck, flexible: CalendarClock, guarantee: BadgeCheck };
 
@@ -10,7 +11,7 @@ export function Hero() {
     <section id="top" className="relative overflow-hidden bg-surface pb-16 pt-10 md:pb-24 md:pt-16">
       <div className="container-site grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-10">
         <div className="hero-in relative z-10">
-          <p className="inline-flex items-center gap-1.5 rounded-full bg-sky-soft px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-sky sm:text-xs">
+          <p className="inline-flex items-center gap-1.5 rounded-full bg-sky-soft px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-sky min-[400px]:text-[11px] sm:text-xs sm:tracking-[0.12em]">
             <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden />
             Professional Home Cleaning in {city}, {state}
           </p>
@@ -49,12 +50,12 @@ export function Hero() {
             <img
               src={heroImage}
               alt={`Professional cleaner wiping down a kitchen counter in a ${city} home`}
-              width={1104}
+              width={1504}
               height={1312}
               fetchPriority="high"
               decoding="async"
               sizes="(min-width: 1024px) 55vw, 100vw"
-              className="aspect-[4/3] w-full object-cover object-[50%_30%] transition-transform duration-700 group-hover:scale-[1.02] lg:aspect-[5/4.4]"
+              className="aspect-[4/3] w-full object-cover object-[40%_30%] transition-transform duration-700 group-hover:scale-[1.02] lg:aspect-[5/4.4]"
             />
           </div>
           {/* Demo claim — confirm with the business before launch. */}
