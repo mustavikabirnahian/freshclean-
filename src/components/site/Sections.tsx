@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from "react";
 import {
-  ArrowRight, Star, ShieldCheck, UserCheck, CalendarClock, BadgeCheck, Check,
+  ArrowRight, Star, ShieldCheck, UserCheck, CalendarClock, BadgeCheck, Check, CheckCircle2,
   ClipboardList, CalendarDays, Sparkles, MapPin, Search, Clock, MousePointerClick, ChevronsLeftRight,
 } from "lucide-react";
 import { business, testimonials } from "@/content/site";
@@ -37,6 +37,12 @@ function SectionHead({ eyebrow, title, sub, center = true }: { eyebrow?: string;
 export { Hero, TrustBar } from "./Hero";
 
 /* ABOUT */
+const aboutPoints = [
+  { title: "Reliable, Consistent Service", text: "Know what to expect every time we visit." },
+  { title: "Careful, Detail-Focused Cleaning", text: "We don't rush the little things." },
+  { title: "Easy Scheduling", text: "Choose a cleaning schedule that works for you." },
+  { title: "Respect for Your Home", text: "Our team treats your space like it matters." },
+];
 export function About() {
   return (
     <section id="about" className="py-20 md:py-28">
@@ -45,26 +51,34 @@ export function About() {
           <div className="overflow-hidden rounded-[1.5rem] shadow-float">
             <img src={about} alt="FreshSpace cleaner wiping down a kitchen island" width={1104} height={1312} loading="lazy" className="aspect-[4/5] w-full object-cover" />
           </div>
-          <div className="absolute -bottom-6 -right-2 rounded-2xl border bg-background p-5 shadow-lift sm:-right-8">
-            <p className="font-display text-3xl text-navy">Same team,</p>
-            <p className="text-sm text-muted-foreground">every visit when possible.</p>
-          </div>
+          <p className="absolute bottom-4 left-4 rounded-lg bg-background/95 px-3.5 py-2 text-sm font-medium text-navy shadow-soft">
+            Carefully cleaned. Every visit.
+          </p>
         </div>
         <div>
-          <SectionHead eyebrow="Why FreshSpace" title="More Than Just Cleaning" center={false} />
-          <div className="reveal mt-6 space-y-4 text-muted-foreground">
-            <p>We're a local cleaning company that shows up when we say we will and does the job right the first time. Every visit follows a detailed checklist, so the baseboards get the same attention as the countertops.</p>
-            <p>Need us early on Tuesdays or only before guests arrive? We build the plan around you, and if anything's missed, we'll come back and make it right.</p>
+          <div className="reveal">
+            <p className="eyebrow">Why FreshSpace</p>
+            <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
+              A Better <span className="text-sky">Kind of Clean.</span>
+            </h2>
           </div>
-          <ul className="reveal mt-8 space-y-4">
-            {["Reliable & Professional Team", "Customized Cleaning Plans", "Easy Online Booking"].map((b) => (
-              <li key={b} className="flex items-center gap-3 font-medium text-navy">
-                <span className="grid h-6 w-6 place-items-center rounded-full bg-sky text-primary-foreground"><Check className="h-3.5 w-3.5" strokeWidth={3} /></span>{b}
+          <div className="reveal mt-6 space-y-4 text-[17px] leading-relaxed text-muted-foreground">
+            <p>We started FreshSpace with a simple idea: cleaning your home shouldn't be something you have to worry about. Our team takes pride in doing the little things right, showing up when we say we will, and leaving every space feeling fresh, comfortable, and cared for.</p>
+            <p>Whether you need a recurring home cleaning, a deep clean, or help getting ready for a move, we're here to make your life a little easier.</p>
+          </div>
+          <ul className="reveal mt-9 space-y-5">
+            {aboutPoints.map((b) => (
+              <li key={b.title} className="flex items-start gap-3.5">
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-sky" strokeWidth={2} aria-hidden />
+                <div>
+                  <p className="font-semibold text-navy">{b.title}</p>
+                  <p className="mt-0.5 text-[15px] text-muted-foreground">{b.text}</p>
+                </div>
               </li>
             ))}
           </ul>
-          <a href="#why-us" className="group mt-10 inline-flex items-center gap-2 font-semibold text-sky hover:text-navy">
-            Meet Our Team <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          <a href="#why-us" className="group mt-10 inline-flex items-center gap-2 rounded font-semibold text-sky hover:text-navy">
+            Why Choose FreshSpace <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
           </a>
         </div>
       </div>
