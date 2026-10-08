@@ -10,6 +10,7 @@ export const business = {
   reviewCount: null as number | null,
   heroAreas: ["Austin", "Round Rock", "Cedar Park", "Pflugerville"],
   primaryCTA: { label: "Get a Free Quote", href: "#quote" },
+  secondaryCTA: { label: "Explore Services", href: "#services" },
   email: "hello@freshspacecleaning.com", // placeholder
   city: "Austin",
   region: "TX",

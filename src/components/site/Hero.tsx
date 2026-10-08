@@ -1,76 +1,66 @@
 import { ArrowRight, Phone, MapPin, Star, ShieldCheck, UserCheck, CalendarClock, BadgeCheck } from "lucide-react";
 import { business, trustItems } from "@/content/site";
-import heroImage from "@/assets/about-cleaner.jpg";
+// Hero photo — swap this import to change the image.
+import heroImage from "@/assets/hero-cleaner.jpg";
 
 const trustIcons = { insured: ShieldCheck, checked: UserCheck, flexible: CalendarClock, guarantee: BadgeCheck };
 
 export function Hero() {
-  const { city, state, googleRating, reviewCount, heroAreas, primaryCTA } = business;
+  const { city, state, googleRating, reviewCount, heroAreas, primaryCTA, secondaryCTA } = business;
   return (
-    <section id="top" className="bg-background pb-14 pt-10 sm:pt-14 lg:pb-20 lg:pt-16">
-      <div className="container-site grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 xl:gap-20">
-        <div className="hero-in">
-          <p className="inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-brand-navy sm:text-xs">
+    <section id="top" className="relative overflow-hidden bg-surface pb-16 pt-10 md:pb-24 md:pt-16">
+      <div className="container-site grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-10">
+        <div className="hero-in relative z-10">
+          <p className="inline-flex items-center gap-1.5 rounded-full bg-sky-soft px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-sky min-[400px]:text-[11px] sm:text-xs sm:tracking-[0.12em]">
             <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden />
             Professional Home Cleaning in {city}, {state}
           </p>
-          <h1 className="mt-5 text-[2.5rem] font-medium leading-[1.06] text-brand-navy sm:text-[3.25rem] lg:text-[3.6rem] xl:text-[4rem]">
-            A Cleaner Home.<br />
-            <span className="text-brand-blue">More Time for You.</span>
+          <h1 className="mt-4 text-[2.6rem] font-medium leading-[1.05] text-navy sm:text-6xl lg:text-[4.25rem]">
+            A Cleaner Space.<br /><span className="italic text-sky">A Healthier You.</span>
           </h1>
-          <p className="mt-5 max-w-[34rem] text-[17px] leading-relaxed text-muted-foreground">
-            Reliable residential cleaning services for busy homeowners in {city} and surrounding areas. From recurring cleanings to deep cleans, we make it easy to come home to a space you love.
+          <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
+            Reliable residential and commercial cleaning services designed around your schedule. We take care of the mess so you can focus on what matters.
           </p>
-
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href={primaryCTA.href} className="group inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-brand-blue px-7 font-semibold text-primary-foreground transition-colors hover:bg-brand-navy">
-              {primaryCTA.label}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+            <a href={primaryCTA.href} className="group inline-flex items-center justify-center gap-2 rounded-full bg-sky px-7 py-4 font-semibold text-primary-foreground shadow-lift transition hover:bg-navy">
+              {primaryCTA.label} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
             </a>
-            <a href={business.phoneHref} className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border-[1.5px] border-brand-blue bg-background px-7 font-semibold text-brand-navy transition-colors hover:bg-brand-soft">
-              <Phone className="h-4 w-4 text-brand-blue" aria-hidden />
-              Call {business.phone}
+            <a href={secondaryCTA.href} className="inline-flex items-center justify-center rounded-full border border-input bg-background px-7 py-4 font-semibold text-navy transition hover:border-navy">
+              {secondaryCTA.label}
             </a>
           </div>
-
-          <div className="mt-8 border-t pt-6">
+          <div className="mt-8">
             <div className="flex items-center gap-2.5">
               <span className="flex gap-0.5 text-star" aria-hidden>
                 {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
               </span>
-              <span className="text-sm font-semibold text-brand-navy">
-                {googleRating}/5 on Google{reviewCount ? ` · ${reviewCount} reviews` : ""}
-              </span>
+              <span className="text-sm font-semibold text-navy">{googleRating}/5 on Google{reviewCount ? ` · ${reviewCount} reviews` : ""}</span>
             </div>
             <p className="mt-1 text-sm text-muted-foreground">Trusted by local homeowners</p>
-            <p className="mt-4 flex items-start gap-1.5 text-sm text-brand-navy/80">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-blue" aria-hidden />
+            <p className="mt-5 flex items-start gap-1.5 text-sm text-navy/75">
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-sky" aria-hidden />
               <span>Serving {heroAreas.join(" • ")}</span>
             </p>
           </div>
         </div>
 
         <div className="hero-img relative">
-          <div className="overflow-hidden rounded-2xl shadow-lift">
+          <div className="absolute -right-6 -top-6 hidden h-full w-full rounded-[1.75rem] bg-sky-soft lg:block" aria-hidden />
+          <div className="group relative overflow-hidden rounded-[1.5rem] shadow-float">
             <img
               src={heroImage}
-              alt="FreshSpace cleaner wiping down a kitchen counter in an Austin home"
-              width={1104}
+              alt={`Professional cleaner wiping down a kitchen counter in a ${city} home`}
+              width={1504}
               height={1312}
               fetchPriority="high"
               decoding="async"
               sizes="(min-width: 1024px) 55vw, 100vw"
-              className="aspect-[4/3] w-full object-cover object-[50%_30%] sm:aspect-[16/11] lg:aspect-[5/5.2]"
+              className="aspect-[4/3] w-full object-cover object-[40%_30%] transition-transform duration-700 group-hover:scale-[1.02] lg:aspect-[5/4.4]"
             />
           </div>
-          {/* Demo claim — replace with a verified business claim before launch. */}
-          <div className="absolute bottom-4 right-4 flex items-center gap-3 rounded-xl bg-background/95 px-4 py-3 shadow-soft sm:bottom-6 sm:right-6">
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-soft text-brand-blue">
-              <ShieldCheck className="h-5 w-5" strokeWidth={1.8} aria-hidden />
-            </span>
-            <p className="text-sm font-semibold leading-snug text-brand-navy">
-              Background-Checked<br />& Trained Cleaners
-            </p>
+          {/* Demo claim — confirm with the business before launch. */}
+          <div className="absolute right-4 top-4 flex items-center gap-2 rounded-full bg-background/95 px-3.5 py-2 text-sm font-medium text-navy shadow-soft">
+            <ShieldCheck className="h-4 w-4 text-leaf" aria-hidden /> Fully insured
           </div>
         </div>
       </div>
