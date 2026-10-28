@@ -60,7 +60,7 @@ export function Hero() {
           </div>
           {/* Demo claim — confirm with the business before launch. */}
           <div className="absolute right-4 top-4 flex items-center gap-2 rounded-full bg-background/95 px-3.5 py-2 text-sm font-medium text-navy shadow-soft">
-            <ShieldCheck className="h-4 w-4 text-leaf" aria-hidden /> Fully insured
+            <ShieldCheck className="h-4 w-4 text-emerald" aria-hidden /> Fully insured
           </div>
         </div>
       </div>

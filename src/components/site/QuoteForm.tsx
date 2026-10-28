@@ -64,7 +64,7 @@ export function QuoteForm() {
         <div className="mx-auto mt-12 max-w-4xl rounded-[1.75rem] border bg-card p-6 shadow-float sm:p-10">
           {sent ? (
             <div className="py-12 text-center" role="status">
-              <CheckCircle2 className="mx-auto h-14 w-14 text-leaf" strokeWidth={1.5} />
+              <CheckCircle2 className="mx-auto h-14 w-14 text-emerald" strokeWidth={1.5} />
               <h3 className="mt-5 text-2xl font-medium text-navy">Thanks — we've got your request.</h3>
               <p className="mx-auto mt-3 max-w-md text-muted-foreground">We'll be in touch shortly with your quote. Need help sooner? Call us at <a className="font-semibold text-emerald" href={business.phoneHref}>{business.phone}</a>.</p>
               <button onClick={() => { setSent(false); started.current = Date.now(); }} className="mt-8 rounded-full border px-6 py-3 font-semibold text-navy hover:border-navy">Send another request</button>
@@ -105,7 +105,7 @@ export function QuoteForm() {
               </div>
               <div className="sm:col-span-2"><label htmlFor="details" className={label}>Additional Details</label><textarea id="details" name="details" rows={4} maxLength={1000} placeholder="Pets, access instructions, areas to focus on…" className={field} {...a("details")} />{err("details")}</div>
               <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
-                <p className="flex items-center gap-2 text-sm text-muted-foreground"><Lock className="h-4 w-4 text-leaf" />Your information is only used to respond to your request.</p>
+                <p className="flex items-center gap-2 text-sm text-muted-foreground"><Lock className="h-4 w-4 text-emerald" />Your information is only used to respond to your request.</p>
                 <button type="submit" disabled={busy} className="group inline-flex items-center justify-center gap-2 rounded-full bg-emerald px-7 py-4 font-semibold text-primary-foreground shadow-lift transition hover:bg-navy disabled:opacity-60">
                   {busy ? "Sending…" : "Request My Free Quote"} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </button>
