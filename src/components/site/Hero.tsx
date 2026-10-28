@@ -11,18 +11,18 @@ export function Hero() {
     <section id="top" className="relative overflow-hidden bg-surface pb-16 pt-10 md:pb-24 md:pt-16">
       <div className="container-site grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-10">
         <div className="hero-in relative z-10">
-          <p className="inline-flex items-center gap-1.5 rounded-full bg-sky-soft px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-sky min-[400px]:text-[11px] sm:text-xs sm:tracking-[0.12em]">
+          <p className="inline-flex items-center gap-1.5 rounded-full bg-emerald-soft px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-emerald min-[400px]:text-[11px] sm:text-xs sm:tracking-[0.12em]">
             <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden />
             Professional Home Cleaning in {city}, {state}
           </p>
           <h1 className="mt-4 text-[2.6rem] font-medium leading-[1.05] text-navy sm:text-6xl lg:text-[4.25rem]">
-            A Cleaner Space.<br /><span className="italic text-sky">A Healthier You.</span>
+            A Cleaner Space.<br /><span className="italic text-emerald">A Healthier You.</span>
           </h1>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
             Reliable residential and commercial cleaning services designed around your schedule. We take care of the mess so you can focus on what matters.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href={primaryCTA.href} className="group inline-flex items-center justify-center gap-2 rounded-full bg-sky px-7 py-4 font-semibold text-primary-foreground shadow-lift transition hover:bg-navy">
+            <a href={primaryCTA.href} className="group inline-flex items-center justify-center gap-2 rounded-full bg-emerald px-7 py-4 font-semibold text-primary-foreground shadow-lift transition hover:bg-navy">
               {primaryCTA.label} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
             </a>
             <a href={secondaryCTA.href} className="inline-flex items-center justify-center rounded-full border border-input bg-background px-7 py-4 font-semibold text-navy transition hover:border-navy">
@@ -38,14 +38,14 @@ export function Hero() {
             </div>
             <p className="mt-1 text-sm text-muted-foreground">Trusted by local homeowners</p>
             <p className="mt-5 flex items-start gap-1.5 text-sm text-navy/75">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-sky" aria-hidden />
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-emerald" aria-hidden />
               <span>Serving {heroAreas.join(" • ")}</span>
             </p>
           </div>
         </div>
 
         <div className="hero-img relative">
-          <div className="absolute -right-6 -top-6 hidden h-full w-full rounded-[1.75rem] bg-sky-soft lg:block" aria-hidden />
+          <div className="absolute -right-6 -top-6 hidden h-full w-full rounded-[1.75rem] bg-emerald-soft lg:block" aria-hidden />
           <div className="group relative overflow-hidden rounded-[1.5rem] shadow-float">
             <img
               src={heroImage}

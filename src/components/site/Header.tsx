@@ -65,12 +65,12 @@ export function Header() {
           <nav aria-label="Main" className="hidden lg:block">
             <ul className="flex items-center gap-7 text-sm font-medium text-foreground/80">
               {nav.map((n) => (
-                <li key={n.href}><a href={n.href} className="transition-colors hover:text-sky">{n.label}</a></li>
+                <li key={n.href}><a href={n.href} className="transition-colors hover:text-emerald">{n.label}</a></li>
               ))}
             </ul>
           </nav>
           <div className="flex items-center gap-2">
-            <a href="#quote" className="rounded-full bg-sky px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:bg-navy sm:px-5">
+            <a href="#quote" className="rounded-full bg-emerald px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:bg-navy sm:px-5">
               <span className="sm:hidden">Get Quote</span><span className="hidden sm:inline">Get a Free Quote</span>
             </a>
             <button onClick={() => setOpen(true)} className="grid h-11 w-11 place-items-center rounded-full text-navy hover:bg-muted lg:hidden" aria-label="Open menu" aria-expanded={open} aria-controls="mobile-nav">
@@ -93,7 +93,7 @@ export function Header() {
             ))}
           </ul>
           <div className="mt-auto space-y-3 pt-6">
-            <a href="#quote" onClick={() => setOpen(false)} className="block rounded-full bg-sky py-3.5 text-center font-semibold text-primary-foreground">Get a Free Quote</a>
+            <a href="#quote" onClick={() => setOpen(false)} className="block rounded-full bg-emerald py-3.5 text-center font-semibold text-primary-foreground">Get a Free Quote</a>
             <a href={business.phoneHref} className="block rounded-full border py-3.5 text-center font-semibold text-navy">Call {business.phone}</a>
             <p className="text-center text-xs text-muted-foreground">{business.hours}</p>
           </div>

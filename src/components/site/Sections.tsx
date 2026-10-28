@@ -59,7 +59,7 @@ export function About() {
           <div className="reveal">
             <p className="eyebrow">Why FreshSpace</p>
             <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
-              A Better <span className="text-sky">Kind of Clean.</span>
+              A Better <span className="text-emerald">Kind of Clean.</span>
             </h2>
           </div>
           <div className="reveal mt-6 space-y-4 text-[17px] leading-relaxed text-muted-foreground">
@@ -69,7 +69,7 @@ export function About() {
           <ul className="reveal mt-9 space-y-5">
             {aboutPoints.map((b) => (
               <li key={b.title} className="flex items-start gap-3.5">
-                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-sky" strokeWidth={2} aria-hidden />
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald" strokeWidth={2} aria-hidden />
                 <div>
                   <p className="font-semibold text-navy">{b.title}</p>
                   <p className="mt-0.5 text-[15px] text-muted-foreground">{b.text}</p>
@@ -77,7 +77,7 @@ export function About() {
               </li>
             ))}
           </ul>
-          <a href="#why-us" className="group mt-10 inline-flex items-center gap-2 rounded font-semibold text-sky hover:text-navy">
+          <a href="#why-us" className="group mt-10 inline-flex items-center gap-2 rounded font-semibold text-emerald hover:text-navy">
             Why Choose FreshSpace <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
           </a>
         </div>
@@ -109,7 +109,7 @@ export function Services() {
               <div className="flex flex-1 flex-col p-6">
                 <h3 className="text-xl font-medium text-navy">{s.title}</h3>
                 <p className="mt-2 flex-1 text-[15px] leading-relaxed text-muted-foreground">{s.text}</p>
-                <a href="#quote" className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-sky hover:text-navy" aria-label={`Learn more about ${s.title}`}>
+                <a href="#quote" className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald hover:text-navy" aria-label={`Learn more about ${s.title}`}>
                   Learn More <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </div>
@@ -195,16 +195,16 @@ export function HowItWorks() {
           {steps.map(({ n, icon: I, title, text }) => (
             <li key={n} className="reveal relative text-center">
               <span className="relative mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-navy-soft shadow-lift ring-1 ring-navy-foreground/10">
-                <I className="h-6 w-6 text-sky-soft" strokeWidth={1.6} />
+                <I className="h-6 w-6 text-emerald-soft" strokeWidth={1.6} />
               </span>
-              <p className="mt-6 font-display text-sm text-sky-soft/70">{n}</p>
+              <p className="mt-6 font-display text-sm text-emerald-soft/70">{n}</p>
               <h3 className="mt-1 text-xl font-medium">{title}</h3>
               <p className="mx-auto mt-2 max-w-xs text-[15px] text-navy-foreground/70">{text}</p>
             </li>
           ))}
         </ol>
         <div className="mt-14 text-center">
-          <a href="#quote" className="group inline-flex items-center gap-2 rounded-full bg-background px-7 py-4 font-semibold text-navy transition hover:bg-sky hover:text-primary-foreground">
+          <a href="#quote" className="group inline-flex items-center gap-2 rounded-full bg-background px-7 py-4 font-semibold text-navy transition hover:bg-emerald hover:text-primary-foreground">
             Book Your Cleaning <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </a>
         </div>
@@ -227,7 +227,7 @@ export function ServiceArea() {
           <ul className="reveal mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
             {business.areas.map((a) => (
               <li key={a} className="flex items-center gap-2 rounded-xl border bg-card px-4 py-3 text-sm font-medium text-navy shadow-soft">
-                <MapPin className="h-4 w-4 shrink-0 text-sky" />{a}
+                <MapPin className="h-4 w-4 shrink-0 text-emerald" />{a}
               </li>
             ))}
           </ul>
@@ -238,18 +238,18 @@ export function ServiceArea() {
               <pattern id="grid" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M6 0H0V6" fill="none" stroke="var(--border)" strokeWidth="0.3" /></pattern>
             </defs>
             <rect width="100" height="75" fill="url(#grid)" />
-            <path d="M-5 50 C 20 44, 30 60, 50 52 S 80 30, 105 38" fill="none" stroke="var(--sky-soft)" strokeWidth="4" />
+            <path d="M-5 50 C 20 44, 30 60, 50 52 S 80 30, 105 38" fill="none" stroke="var(--emerald-soft)" strokeWidth="4" />
             <path d="M52 -5 L 50 40 L 46 80" fill="none" stroke="var(--background)" strokeWidth="2" />
             <path d="M-5 30 L 40 34 L 105 22" fill="none" stroke="var(--background)" strokeWidth="1.5" />
             <path d="M10 80 L 30 45 L 60 10" fill="none" stroke="var(--background)" strokeWidth="1.2" />
-            <circle cx="48" cy="45" r="22" fill="var(--sky)" fillOpacity="0.07" stroke="var(--sky)" strokeOpacity="0.3" strokeWidth="0.3" strokeDasharray="1 1" />
+            <circle cx="48" cy="45" r="22" fill="var(--emerald)" fillOpacity="0.07" stroke="var(--emerald)" strokeOpacity="0.3" strokeWidth="0.3" strokeDasharray="1 1" />
           </svg>
           {pins.map((p, i) => (
             <div key={i} className="absolute -translate-x-1/2 -translate-y-full" style={{ left: `${p.x}%`, top: `${p.y}%` }}>
               <div className="whitespace-nowrap rounded-full bg-background px-2.5 py-1 text-[11px] font-semibold text-navy shadow-lift sm:text-xs">
                 {business.areas[i]}
               </div>
-              <div className="mx-auto mt-1 h-2.5 w-2.5 rounded-full border-2 border-background bg-sky shadow-soft" />
+              <div className="mx-auto mt-1 h-2.5 w-2.5 rounded-full border-2 border-background bg-emerald shadow-soft" />
             </div>
           ))}
         </div>
@@ -270,7 +270,7 @@ export function Testimonials() {
               <Stars n={t.rating} />
               <blockquote className="mt-5 flex-1 text-[15px] leading-relaxed text-foreground/85">"{t.text}"</blockquote>
               <figcaption className="mt-6 flex items-center gap-3 border-t pt-5">
-                <span className="grid h-11 w-11 place-items-center rounded-full bg-sky-soft font-semibold text-navy">{t.initials}</span>
+                <span className="grid h-11 w-11 place-items-center rounded-full bg-emerald-soft font-semibold text-navy">{t.initials}</span>
                 <span>
                   <span className="block font-semibold text-navy">{t.name}</span>
                   <span className="block text-sm text-muted-foreground">{t.location}</span>
@@ -329,7 +329,7 @@ export function WhyUs() {
         <div className="grid gap-5 sm:grid-cols-2">
           {why.map(({ icon: I, title, text }) => (
             <div key={title} className="reveal lift rounded-2xl border bg-card p-7 shadow-soft">
-              <span className="grid h-12 w-12 place-items-center rounded-xl bg-sky-soft text-sky"><I className="h-5 w-5" strokeWidth={1.7} /></span>
+              <span className="grid h-12 w-12 place-items-center rounded-xl bg-emerald-soft text-emerald"><I className="h-5 w-5" strokeWidth={1.7} /></span>
               <h3 className="mt-5 text-xl font-medium text-navy">{title}</h3>
               <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{text}</p>
             </div>
