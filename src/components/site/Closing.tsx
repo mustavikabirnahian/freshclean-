@@ -10,7 +10,7 @@ export function FAQ() {
         <div className="reveal">
           <p className="eyebrow">FAQ</p>
           <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">Questions we hear a lot</h2>
-          <p className="mt-4 text-muted-foreground">Don't see yours? Call <a href={business.phoneHref} className="font-semibold text-sky">{business.phone}</a> — happy to help.</p>
+          <p className="mt-4 text-muted-foreground">Don't see yours? Call <a href={business.phoneHref} className="font-semibold text-emerald">{business.phone}</a> — happy to help.</p>
         </div>
         <Accordion type="single" collapsible className="reveal rounded-2xl border bg-card px-6 shadow-soft">
           {faqs.map((f, i) => (
@@ -29,15 +29,15 @@ export function FinalCTA() {
   return (
     <section className="py-20 md:py-24">
       <div className="container-site">
-        <div className="reveal relative overflow-hidden rounded-[2rem] bg-sky-soft px-6 py-14 text-center shadow-lift sm:px-12 md:py-20">
+        <div className="reveal relative overflow-hidden rounded-[2rem] bg-emerald-soft px-6 py-14 text-center shadow-lift sm:px-12 md:py-20">
           <h2 className="mx-auto max-w-2xl text-3xl font-medium text-navy sm:text-5xl">Your Cleaner Space Is One Click Away.</h2>
           <p className="mx-auto mt-4 max-w-lg text-muted-foreground">Tell us what you need cleaned and we'll help you find the right service.</p>
-          <a href="#quote" className="group mt-8 inline-flex items-center gap-2 rounded-full bg-navy px-8 py-4 font-semibold text-navy-foreground shadow-lift transition hover:bg-sky">
+          <a href="#quote" className="group mt-8 inline-flex items-center gap-2 rounded-full bg-navy px-8 py-4 font-semibold text-navy-foreground shadow-lift transition hover:bg-emerald">
             Get My Free Quote <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </a>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 text-sm text-navy sm:flex-row sm:gap-8">
-            <a href={business.phoneHref} className="flex items-center gap-2 font-medium"><Phone className="h-4 w-4 text-sky" />{business.phone}</a>
-            <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-sky" />{business.hours}</span>
+            <a href={business.phoneHref} className="flex items-center gap-2 font-medium"><Phone className="h-4 w-4 text-emerald" />{business.phone}</a>
+            <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-emerald" />{business.hours}</span>
           </div>
         </div>
       </div>
@@ -60,9 +60,9 @@ export function Footer() {
           <p className="mt-5 max-w-xs text-sm text-navy-foreground/70">{business.tagline}</p>
           <div className="mt-6 flex gap-3">
             {[{ I: Facebook, l: "Facebook" }, { I: Instagram, l: "Instagram" }].map(({ I, l }) => (
-              <a key={l} href="#" aria-label={l} className="grid h-10 w-10 place-items-center rounded-full bg-navy-soft transition hover:bg-sky"><I className="h-4 w-4" /></a>
+              <a key={l} href="#" aria-label={l} className="grid h-10 w-10 place-items-center rounded-full bg-navy-soft transition hover:bg-emerald"><I className="h-4 w-4" /></a>
             ))}
-            <a href="#" aria-label="Google Business Profile" className="grid h-10 w-10 place-items-center rounded-full bg-navy-soft transition hover:bg-sky"><GoogleIcon /></a>
+            <a href="#" aria-label="Google Business Profile" className="grid h-10 w-10 place-items-center rounded-full bg-navy-soft transition hover:bg-emerald"><GoogleIcon /></a>
           </div>
         </div>
         <nav aria-label="Footer">
