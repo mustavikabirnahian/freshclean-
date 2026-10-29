@@ -5,10 +5,6 @@ import { ZIP_PATTERN, checkZipCoverage } from "./zip-coverage";
 // Hero photo — swap this import to change the image.
 import heroImage from "@/assets/hero-cleaner.jpg";
 
-import { business } from "@/content/site";
-import { ZIP_PATTERN, checkZipCoverage } from "./zip-coverage";
-// Hero photo — swap this import to change the image.
-import heroImage from "@/assets/hero-cleaner.jpg";
 
 /* Full-bleed hero: documentary photo, headline left, location-finder card right. */
 export function Hero() {
