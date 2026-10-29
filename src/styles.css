@@ -37,6 +37,10 @@
   --color-emerald: var(--emerald);
   --color-emerald-bright: var(--emerald-bright);
   --color-emerald-soft: var(--emerald-soft);
+  --color-emerald-dark: var(--emerald-dark);
+  --color-blue: var(--blue);
+  --color-blue-bright: var(--blue-bright);
+  --color-blue-soft: var(--blue-soft);
   --color-lilac: var(--lilac);
   --color-lilac-soft: var(--lilac-soft);
   --color-star: var(--star);
@@ -68,6 +72,10 @@
   --emerald: oklch(0.5 0.115 158);
   --emerald-bright: oklch(0.8 0.12 158);
   --emerald-soft: oklch(0.94 0.038 155);
+  --emerald-dark: oklch(0.42 0.115 158);
+  --blue: #1685D4;
+  --blue-bright: #79BBEA;
+  --blue-soft: #EAF5FC;
   --lilac: oklch(0.6 0.075 275);
   --lilac-soft: oklch(0.93 0.025 285);
   --star: oklch(0.78 0.15 75);

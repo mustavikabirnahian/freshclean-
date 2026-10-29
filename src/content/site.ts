@@ -2,8 +2,15 @@
 export const business = {
   name: "FreshSpace Cleaning Co.",
   tagline: "Professional Cleaning. A Space You'll Love.",
-  phone: "(512) 555-0147", // demo number — replace with real number
-  phoneHref: "tel:+15125550147",
+  phone: "01306247135", // supplied demo number — replace with the real business number before launch
+  phoneHref: "tel:01306247135",
+  email: "adnestbd@gmail.com", // supplied demo email — replace before launch
+  // Official profiles only. Leave a URL empty ("") to hide that social icon.
+  socialLinks: {
+    facebook: "",
+    instagram: "",
+    youtube: "",
+  },
   state: "TX",
   // Demo rating — replace with your real Google rating (set reviewCount only if verified).
   googleRating: "4.9",
@@ -11,10 +18,9 @@ export const business = {
   heroAreas: ["Austin", "Round Rock", "Cedar Park", "Pflugerville"],
   primaryCTA: { label: "Get a Free Quote", href: "#quote" },
   secondaryCTA: { label: "Explore Services", href: "#services" },
-  email: "hello@freshspacecleaning.com", // placeholder
   city: "Austin",
   region: "TX",
-  serviceAreaLabel: "Austin & surrounding areas",
+  serviceAreaLabel: "Austin & Surrounding Areas",
   hours: "Mon–Sat, 8am–6pm",
   // Demo locations — replace with the areas you actually serve.
   areas: ["Austin", "Round Rock", "Cedar Park", "Pflugerville", "Bee Cave", "Lakeway"],
