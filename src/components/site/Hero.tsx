@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { ArrowRight, MapPin, Phone, Search, Star } from "lucide-react";
+import { ArrowRight, MapPin, Phone, Search, Star, ShieldCheck, UserCheck, CalendarClock, BadgeCheck } from "lucide-react";
 import { business } from "@/content/site";
 import { ZIP_PATTERN, checkZipCoverage } from "./zip-coverage";
 // Hero photo — swap this import to change the image.
