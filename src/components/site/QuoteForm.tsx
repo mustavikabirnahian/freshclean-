@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { ArrowRight, CheckCircle2, Phone } from "lucide-react";
 import { business } from "@/content/site";
-import { useQuoteSubmit, type QuoteErrors } from "./use-quote";
+import { useQuoteSubmit, quoteSchema, type QuoteErrors } from "./use-quote";
 import bookingPhoto from "@/assets/booking-cleaner.jpg";
 
 export { useQuoteSubmit, quoteSchema, type QuoteErrors } from "./use-quote";
