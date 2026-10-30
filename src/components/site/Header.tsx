@@ -119,6 +119,17 @@ export function Header() {
             </a>
             <a href={business.phoneHref} className="block rounded-full border py-3.5 text-center font-semibold text-navy">Call {business.phone}</a>
             <a href={`mailto:${business.email}`} className="block text-center text-xs text-muted-foreground hover:text-navy">{business.email}</a>
+            {configuredSocials.length > 0 && (
+              <ul className="flex items-center justify-center gap-2" aria-label="Social media">
+                {configuredSocials.map(({ key, label, Icon, url }) => (
+                  <li key={key}>
+                    <a href={url} target="_blank" rel="noopener noreferrer" aria-label={`Visit our ${label} page`} className="grid h-10 w-10 place-items-center rounded-full border text-navy/70 transition hover:border-emerald hover:text-emerald">
+                      <Icon className="h-4 w-4" aria-hidden />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </div>
