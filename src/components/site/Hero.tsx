@@ -71,7 +71,7 @@ export function Hero() {
 type ZipState =
   | { kind: "idle" }
   | { kind: "invalid"; message: string }
-  | { kind: "covered"; message: string; detail?: string }
+  | { kind: "covered"; message: string; detail?: string | undefined }
   | { kind: "outside"; message: string; detail: string }
   | { kind: "unavailable"; message: string };
 
