@@ -181,7 +181,7 @@ export function BeforeAfter() {
               </div>
             </div>
           </div>
-          <p className="mt-4 text-center text-sm text-muted-foreground">Drag the handle to compare. Sample photos for illustration.</p>
+          <p className="mt-4 text-center text-sm text-muted-foreground">Drag the handle to compare — same bedroom, before and after.</p>
         </div>
       </div>
     </section>
