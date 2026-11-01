@@ -9,6 +9,8 @@ import hero from "@/assets/hero-home.jpg";
 import about from "@/assets/about-cleaner.jpg";
 import before from "@/assets/before-kitchen.jpg";
 import after from "@/assets/after-kitchen.jpg";
+import beforeBed from "@/assets/before-bedroom.jpg";
+import afterBed from "@/assets/after-bedroom.jpg";
 import sRes from "@/assets/svc-residential.jpg";
 import sDeep from "@/assets/svc-deep.jpg";
 import sMove from "@/assets/svc-move.jpg";
