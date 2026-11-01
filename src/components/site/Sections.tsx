@@ -9,6 +9,8 @@ import hero from "@/assets/hero-home.jpg";
 import about from "@/assets/about-cleaner.jpg";
 import before from "@/assets/before-kitchen.jpg";
 import after from "@/assets/after-kitchen.jpg";
+import beforeBed from "@/assets/before-bedroom.jpg";
+import afterBed from "@/assets/after-bedroom.jpg";
 import sRes from "@/assets/svc-residential.jpg";
 import sDeep from "@/assets/svc-deep.jpg";
 import sMove from "@/assets/svc-move.jpg";
@@ -155,9 +157,9 @@ export function BeforeAfter() {
             onPointerUp={() => (dragging.current = false)}
             onPointerCancel={() => (dragging.current = false)}
           >
-            <img src={after} alt="Kitchen after cleaning" width={1600} height={1008} loading="lazy" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
+            <img src={afterBed} alt="Bedroom after professional cleaning" width={1600} height={1008} loading="lazy" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
             <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
-              <img src={before} alt="Kitchen before cleaning" width={1600} height={1008} loading="lazy" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
+              <img src={beforeBed} alt="Bedroom before professional cleaning" width={1600} height={1008} loading="lazy" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
             </div>
             <span className="absolute left-4 top-4 rounded-full bg-navy/80 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-navy-foreground">Before</span>
             <span className="absolute right-4 top-4 rounded-full bg-background/90 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-navy">After</span>
@@ -179,7 +181,7 @@ export function BeforeAfter() {
               </div>
             </div>
           </div>
-          <p className="mt-4 text-center text-sm text-muted-foreground">Drag the handle to compare. Sample photos for illustration.</p>
+          <p className="mt-4 text-center text-sm text-muted-foreground">Drag the handle to compare — same bedroom, before and after.</p>
         </div>
       </div>
     </section>
