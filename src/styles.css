@@ -150,6 +150,7 @@
 @utility pin-in { animation: pin-in 450ms cubic-bezier(0.2, 0.9, 0.3, 1.15) both; }
 @utility pin-hover { transition: transform 200ms ease; &:hover { transform: scale(1.06); } }
 
+@media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0ms !important; animation-duration: 0ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
