@@ -2,6 +2,7 @@ import { useCallback, useRef, useState } from "react";
 import {
   ArrowRight, Star, ShieldCheck, UserCheck, CalendarClock, BadgeCheck, Check, CheckCircle2,
   ClipboardList, CalendarDays, Sparkles, MapPin, Search, Clock, MousePointerClick, ChevronsLeftRight,
+  Home, Truck, Building2, KeyRound, Store,
 } from "lucide-react";
 import { business, testimonials } from "@/content/site";
 import hero from "@/assets/hero-home.jpg";
@@ -88,32 +89,41 @@ export function About() {
 
 /* SERVICES */
 const services = [
-  { img: sRes, title: "Residential Cleaning", text: "Regular cleaning for houses and apartments — kitchens, baths, floors, dusting, and the details in between." },
-  { img: sDeep, title: "Deep Cleaning", text: "A top-to-bottom clean for grout, baseboards, inside appliances, and the spots that build up over time." },
-  { img: sMove, title: "Move-In / Move-Out Cleaning", text: "Hand back the keys with confidence, or start fresh in a home that's actually clean." },
-  { img: sOffice, title: "Office Cleaning", text: "After-hours cleaning for desks, break rooms, and restrooms so your team walks into a clean office." },
-  { img: sAir, title: "Airbnb & Vacation Rental Cleaning", text: "Fast turnovers between guests, with fresh linens, restocking, and photo-ready rooms." },
-  { img: sCom, title: "Commercial Cleaning", text: "Reliable cleaning for retail spaces, studios, and small businesses on a schedule that fits." },
+  { img: sRes, icon: Home, title: "Residential Cleaning", text: "Regular cleaning for houses and apartments — kitchens, baths, floors, dusting, and the details in between." },
+  { img: sDeep, icon: Sparkles, title: "Deep Cleaning", text: "A top-to-bottom clean for grout, baseboards, inside appliances, and the spots that build up over time." },
+  { img: sMove, icon: Truck, title: "Move-In / Move-Out Cleaning", text: "Hand back the keys with confidence, or start fresh in a home that's actually clean." },
+  { img: sOffice, icon: Building2, title: "Office Cleaning", text: "After-hours cleaning for desks, break rooms, and restrooms so your team walks into a clean office." },
+  { img: sAir, icon: KeyRound, title: "Airbnb & Vacation Rental Cleaning", text: "Fast turnovers between guests, with fresh linens, restocking, and photo-ready rooms." },
+  { img: sCom, icon: Store, title: "Commercial Cleaning", text: "Reliable cleaning for retail spaces, studios, and small businesses on a schedule that fits." },
 ];
 export function Services() {
   return (
     <section id="services" className="bg-surface py-20 md:py-28">
       <div className="container-site">
         <SectionHead eyebrow="Our Services" title="Cleaning Services Built Around You" sub="From routine home cleaning to detailed commercial services, we make keeping your space clean simple." />
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s) => (
-            <article key={s.title} className="reveal lift group flex flex-col overflow-hidden rounded-2xl border bg-card shadow-soft">
-              <div className="overflow-hidden">
-                <img src={s.img} alt={s.title} width={928} height={720} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
-              </div>
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-xl font-medium text-navy">{s.title}</h3>
-                <p className="mt-2 flex-1 text-[15px] leading-relaxed text-muted-foreground">{s.text}</p>
-                <a href="#quote" className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald hover:text-navy" aria-label={`Learn more about ${s.title}`}>
-                  Learn More <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
-              </div>
-            </article>
+        <div className="mt-14 grid gap-x-7 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map(({ img, icon: Icon, title, text }) => (
+            <div key={title} className="reveal service-shadow group relative transition-transform duration-300 hover:-translate-y-1.5">
+              <article className="relative flex flex-col overflow-hidden rounded-2xl border border-navy/10 bg-card/60 shadow-[inset_0_1px_0_oklch(1_0_0/0.65)] backdrop-blur-md transition-colors duration-300 hover:bg-card/80">
+                <div className="p-3 pb-0">
+                  <div className="overflow-hidden rounded-xl">
+                    <img src={img} alt={title} width={928} height={720} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]" />
+                  </div>
+                </div>
+                <div className="flex flex-1 flex-col p-6 pb-8">
+                  <h3 className="text-xl font-medium text-navy">{title}</h3>
+                  <p className="mt-2 flex-1 text-[15px] leading-relaxed text-muted-foreground">{text}</p>
+                  <a href="#quote" className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald transition-colors hover:text-navy" aria-label={`Learn more about ${title}`}>
+                    Learn More <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </a>
+                </div>
+                {/* Angled bottom-right corner cut */}
+                <span aria-hidden className="absolute bottom-0 right-0 h-16 w-16 bg-surface [clip-path:polygon(100%_0,100%_100%,0_100%)]" />
+              </article>
+              <span className="absolute bottom-0 right-0 grid h-14 w-14 translate-x-[30%] translate-y-[30%] place-items-center rounded-full bg-navy text-emerald-soft shadow-lift ring-4 ring-surface transition-transform duration-300 group-hover:scale-110">
+                <Icon className="h-6 w-6" strokeWidth={1.6} aria-hidden />
+              </span>
+            </div>
           ))}
         </div>
       </div>
