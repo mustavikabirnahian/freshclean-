@@ -157,9 +157,9 @@ export function BeforeAfter() {
             onPointerUp={() => (dragging.current = false)}
             onPointerCancel={() => (dragging.current = false)}
           >
-            <img src={after} alt="Kitchen after cleaning" width={1600} height={1008} loading="lazy" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
+            <img src={afterBed} alt="Bedroom after professional cleaning" width={1600} height={1008} loading="lazy" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
             <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
-              <img src={before} alt="Kitchen before cleaning" width={1600} height={1008} loading="lazy" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
+              <img src={beforeBed} alt="Bedroom before professional cleaning" width={1600} height={1008} loading="lazy" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
             </div>
             <span className="absolute left-4 top-4 rounded-full bg-navy/80 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-navy-foreground">Before</span>
             <span className="absolute right-4 top-4 rounded-full bg-background/90 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-navy">After</span>
