@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
+import { Categories } from "@/components/site/Categories";
 import { Hero, TrustBar, About, Services, BeforeAfter, HowItWorks, ServiceArea, Testimonials, Gallery, WhyUs } from "@/components/site/Sections";
 import { QuoteForm } from "@/components/site/QuoteForm";
 import { FAQ, FinalCTA, Footer } from "@/components/site/Closing";
@@ -52,6 +53,7 @@ function Index() {
       <main id="main">
         <Hero />
         <TrustBar />
+        <Categories />
         <About />
         <Services />
         <BeforeAfter />
