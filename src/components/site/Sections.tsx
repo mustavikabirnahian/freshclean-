@@ -271,27 +271,156 @@ export function ServiceArea() {
 }
 
 /* TESTIMONIALS */
+const serviceIcons: Record<string, typeof Home> = {
+  "Deep Cleaning": Sparkles,
+  "Residential Cleaning": Home,
+  "Move-In / Move-Out": Truck,
+  "Office Cleaning": Building2,
+};
+const trustIconMap = { shield: ShieldCheck, handshake: Handshake, clock: Clock, leaf: Leaf };
+
+function GoogleWordmark() {
+  const letters: Array<[string, string]> = [
+    ["G", "#4285F4"], ["o", "#EA4335"], ["o", "#FBBC05"], ["g", "#4285F4"], ["l", "#34A853"], ["e", "#EA4335"],
+  ];
+  return (
+    <span className="select-none font-sans text-xl font-bold tracking-tight sm:text-2xl" aria-label="Google">
+      {letters.map(([ch, color], i) => <span key={i} style={{ color }}>{ch}</span>)}
+    </span>
+  );
+}
+
+function DecoLines({ flip = false }: { flip?: boolean }) {
+  return (
+    <span className={`rating-lines hidden sm:flex ${flip ? "rating-lines-flip" : ""}`} aria-hidden>
+      {[0, 1, 2].map((i) => (
+        <span key={i} style={{ transitionDelay: `${(flip ? 2 - i : i) * 100}ms` }} />
+      ))}
+    </span>
+  );
+}
+
 export function Testimonials() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(false);
+
+  const update = useCallback(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    setCanPrev(el.scrollLeft > 8);
+    setCanNext(el.scrollLeft < el.scrollWidth - el.clientWidth - 8);
+  }, []);
+
+  useEffect(() => {
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, [update]);
+
+  const scrollByCard = useCallback((dir: 1 | -1) => {
+    const el = trackRef.current;
+    const first = el?.firstElementChild as HTMLElement | null;
+    if (!el || !first) return;
+    el.scrollBy({ left: dir * (first.offsetWidth + 24), behavior: "smooth" });
+  }, []);
+
   return (
     <section id="reviews" className="bg-surface py-20 md:py-28">
       <div className="container-site">
-        <SectionHead eyebrow="Reviews" title="What Our Customers Say" />
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <figure key={i} className="reveal lift flex flex-col rounded-2xl border bg-card p-7 shadow-soft">
-              <Stars n={t.rating} />
-              <blockquote className="mt-5 flex-1 text-[15px] leading-relaxed text-foreground/85">"{t.text}"</blockquote>
-              <figcaption className="mt-6 flex items-center gap-3 border-t pt-5">
-                <span className="grid h-11 w-11 place-items-center rounded-full bg-emerald-soft font-semibold text-navy">{t.initials}</span>
-                <span>
-                  <span className="block font-semibold text-navy">{t.name}</span>
-                  <span className="block text-sm text-muted-foreground">{t.location}</span>
-                </span>
-              </figcaption>
-            </figure>
-          ))}
+        <div className="reveal mx-auto max-w-2xl text-center">
+          <p className="eyebrow flex items-center justify-center gap-3">
+            <span className="h-px w-7 bg-emerald/60" aria-hidden /> Real Clients. Real Results. <span className="h-px w-7 bg-emerald/60" aria-hidden />
+          </p>
+          <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">What Our Customers Say</h2>
+          <p className="mt-4 text-base text-muted-foreground sm:text-lg">Don't just take our word for it — hear from homeowners who trust us to keep their spaces clean.</p>
         </div>
-        <p className="mt-8 text-center text-xs text-muted-foreground">Sample placeholder reviews shown for design purposes. Replace with verified customer reviews.</p>
+
+        {/* Google rating panel flanked by decorative angled emerald lines */}
+        <div className="reveal mt-10 flex items-center justify-center gap-3 sm:gap-6">
+          <DecoLines />
+          <div className="flex items-center gap-3 rounded-full border border-emerald/15 bg-emerald-soft/70 px-5 py-3 shadow-soft sm:gap-4 sm:px-7 sm:py-4">
+            <GoogleWordmark />
+            <span className="text-2xl font-semibold text-navy sm:text-3xl">
+              4.9<span className="ml-0.5 text-base font-medium text-muted-foreground">/5</span>
+            </span>
+            <span className="h-7 w-px bg-emerald/30 sm:h-8" aria-hidden />
+            <Stars n={5} />
+            <span className="hidden text-xs font-medium text-muted-foreground lg:block">Based on sample reviews</span>
+          </div>
+          <DecoLines flip />
+        </div>
+
+        {/* Review carousel */}
+        <div className="relative mt-12">
+          <button
+            type="button"
+            onClick={() => scrollByCard(-1)}
+            disabled={!canPrev}
+            aria-label="Previous reviews"
+            className="absolute top-1/2 left-1 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border bg-card text-navy shadow-lift transition-colors duration-300 hover:bg-navy hover:text-navy-foreground disabled:pointer-events-none disabled:opacity-35 sm:left-0 sm:-translate-x-1/2"
+          >
+            <ChevronLeft className="h-5 w-5" aria-hidden />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollByCard(1)}
+            disabled={!canNext}
+            aria-label="Next reviews"
+            className="absolute top-1/2 right-1 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border bg-card text-navy shadow-lift transition-colors duration-300 hover:bg-navy hover:text-navy-foreground disabled:pointer-events-none disabled:opacity-35 sm:right-0 sm:translate-x-1/2"
+          >
+            <ChevronRight className="h-5 w-5" aria-hidden />
+          </button>
+          <div
+            ref={trackRef}
+            onScroll={update}
+            className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {testimonials.map((t, i) => {
+              const Icon = serviceIcons[t.service] ?? Sparkles;
+              return (
+                <div
+                  key={i}
+                  className="reveal w-[88%] flex-none snap-start sm:w-[calc(50%-0.75rem)] lg:w-[calc((100%-3rem)/3)]"
+                  style={{ transitionDelay: `${i * 90}ms` }}
+                >
+                  <figure className={`flex h-full flex-col rounded-2xl border bg-card p-7 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-emerald/45 hover:shadow-lift ${i === 1 ? "border-emerald/40" : ""}`}>
+                    <div className="flex items-center gap-3">
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-emerald-soft font-semibold text-navy">{t.initials}</span>
+                      <span className="min-w-0">
+                        <span className="block truncate font-semibold text-navy">{t.name}</span>
+                        <span className="block text-sm text-muted-foreground">{t.location}</span>
+                      </span>
+                      <Stars n={t.rating} className="ml-auto shrink-0" />
+                    </div>
+                    <blockquote className="mt-5 flex-1 text-[15px] leading-relaxed text-foreground/85">"{t.text}"</blockquote>
+                    <figcaption className="mt-6 flex items-center gap-2.5 border-t pt-5">
+                      <Icon className="h-4 w-4 shrink-0 text-emerald" strokeWidth={1.8} aria-hidden />
+                      <span className="text-sm font-medium text-emerald">{t.service}</span>
+                      <span className="h-4 w-px bg-border" aria-hidden />
+                      <span className="text-xs text-muted-foreground">{t.date}</span>
+                    </figcaption>
+                  </figure>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Trust benefits strip */}
+        <ul className="reveal mt-14 grid grid-cols-2 gap-x-6 gap-y-7 sm:flex sm:items-center sm:justify-center sm:divide-x sm:divide-emerald/20">
+          {reviewTrustBenefits.map(({ key, text }, i) => {
+            const I = trustIconMap[key];
+            return (
+              <li key={key} className={`flex items-center gap-3 sm:px-7 ${i === 0 ? "sm:pl-0" : ""} ${i === reviewTrustBenefits.length - 1 ? "sm:pr-0" : ""}`}>
+                <I className="h-6 w-6 shrink-0 text-emerald" strokeWidth={1.6} aria-hidden />
+                <span className="text-[15px] font-medium leading-snug text-navy">{text}</span>
+              </li>
+            );
+          })}
+        </ul>
+
+        <p className="mt-10 text-center text-xs text-muted-foreground">Sample reviews, names and Google rating shown for demo purposes. Replace with verified customer reviews before launch.</p>
       </div>
     </section>
   );
