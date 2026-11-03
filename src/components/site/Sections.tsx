@@ -1,10 +1,10 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ArrowRight, Star, ShieldCheck, UserCheck, CalendarClock, BadgeCheck, Check, CheckCircle2,
   ClipboardList, CalendarDays, Sparkles, MapPin, Search, Clock, MousePointerClick, ChevronsLeftRight,
-  Home, Truck, Building2, KeyRound, Store,
+  Home, Truck, Building2, KeyRound, Store, Handshake, Leaf, ChevronLeft, ChevronRight,
 } from "lucide-react";
-import { business, testimonials } from "@/content/site";
+import { business, reviewTrustBenefits, testimonials } from "@/content/site";
 import hero from "@/assets/hero-home.jpg";
 import about from "@/assets/about-cleaner.jpg";
 import before from "@/assets/before-kitchen.jpg";

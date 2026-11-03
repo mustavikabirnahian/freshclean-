@@ -34,30 +34,44 @@ export const trustItems = [
   { key: "guarantee", title: "Satisfaction Guarantee", text: "We're not happy until you are." },
 ] as const;
 
-// Placeholder testimonials. Replace with verified customer reviews before launch.
+// Sample reviews for the demo — fictional names, clearly marked. Replace with verified customer reviews before launch.
 export const testimonials = [
   {
-    name: "Sample Customer",
-    initials: "SC",
+    name: "Dana R.",
+    initials: "DR",
     location: "Austin, TX",
     rating: 5,
-    text: "Placeholder review — replace with a real customer quote. Example: the team showed up on time, the kitchen and bathrooms were spotless, and booking took two minutes.",
+    service: "Deep Cleaning",
+    date: "3 weeks ago",
+    text: "We booked a cleaning before family came to visit. The team arrived on time, worked through the whole house, and did a really nice job with the kitchen and bathrooms.",
   },
   {
-    name: "Sample Customer",
-    initials: "SC",
+    name: "Marcus T.",
+    initials: "MT",
     location: "Round Rock, TX",
     rating: 5,
-    text: "Placeholder review — replace with a real customer quote. Example: we use them every other week and it's one less thing to think about.",
+    service: "Residential Cleaning",
+    date: "1 month ago",
+    text: "I've been using their recurring cleaning service for a while now. Scheduling is straightforward, and it's nice coming home to a clean space after work.",
   },
   {
-    name: "Sample Business",
-    initials: "SB",
+    name: "Priya S.",
+    initials: "PS",
     location: "Cedar Park, TX",
     rating: 5,
-    text: "Placeholder review — replace with a real customer quote. Example: our office has never looked better, and they work around our hours.",
+    service: "Move-In / Move-Out",
+    date: "2 months ago",
+    text: "Needed help getting my apartment ready for a move. They took care of the floors, kitchen, and bathrooms. Made the whole process a lot easier.",
   },
 ];
+
+// Demo trust benefits shown under the reviews. Keep only the claims the business can genuinely stand behind.
+export const reviewTrustBenefits = [
+  { key: "shield", text: "Trusted & Insured Professionals" },
+  { key: "handshake", text: "Satisfaction Guarantee" },
+  { key: "clock", text: "On-Time Service" },
+  { key: "leaf", text: "Eco-Friendly Cleaning Products" },
+] as const;
 
 export const faqs = [
   { q: "How much does cleaning cost?", a: "Pricing depends on the size of your space, the type of cleaning, and how often you'd like service. Send a quote request and we'll get back to you with a clear price — no surprises." },

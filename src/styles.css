@@ -152,6 +152,18 @@
 }
 .is-visible .accent-line { transform: scaleX(1); }
 
+/* Decorative angled emerald lines flanking the Google rating panel; sweep in when the section reveals. */
+.rating-lines { display: flex; align-items: center; gap: 0.4rem; }
+.rating-lines span {
+  display: block; height: 3px; width: 1.35rem; border-radius: 9999px;
+  background: var(--emerald); opacity: 0;
+  transform: rotate(-45deg) scaleX(0.25);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+.rating-lines-flip span { transform: rotate(45deg) scaleX(0.25); }
+.is-visible .rating-lines span { opacity: 1; transform: rotate(-45deg) scaleX(1); }
+.is-visible .rating-lines-flip span { opacity: 1; transform: rotate(45deg) scaleX(1); }
+
 
 @utility lift {
   transition: transform 300ms ease, box-shadow 300ms ease;
