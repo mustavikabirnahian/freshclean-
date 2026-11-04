@@ -153,7 +153,7 @@ export function Journal() {
 
         {/* Newsletter banner */}
         <div className="reveal mt-16 rounded-3xl bg-navy p-8 text-navy-foreground shadow-float md:p-12">
-          <div className="grid items-center gap-8 lg:grid-cols-[auto_1fr_auto] lg:gap-10">
+          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[auto_1fr_auto] lg:gap-10">
             <div className="flex items-center gap-8">
               <span className="mx-auto grid place-items-center lg:mx-0"><HouseLeaf /></span>
               <span className="hidden h-24 w-px bg-emerald-bright/40 lg:block" aria-hidden />
