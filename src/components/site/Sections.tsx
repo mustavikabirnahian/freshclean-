@@ -278,6 +278,7 @@ const serviceIcons: Record<string, typeof Home> = {
   "Office Cleaning": Building2,
 };
 const trustIconMap = { shield: ShieldCheck, handshake: Handshake, clock: Clock, leaf: Leaf };
+const arrowBtnClass = "grid h-12 w-12 place-items-center rounded-full border bg-card text-navy shadow-lift transition-colors duration-300 hover:bg-navy hover:text-navy-foreground disabled:pointer-events-none disabled:opacity-35";
 
 function GoogleWordmark() {
   const letters: Array<[string, string]> = [
@@ -358,7 +359,7 @@ export function Testimonials() {
             onClick={() => scrollByCard(-1)}
             disabled={!canPrev}
             aria-label="Previous reviews"
-            className="absolute top-1/2 left-1 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border bg-card text-navy shadow-lift transition-colors duration-300 hover:bg-navy hover:text-navy-foreground disabled:pointer-events-none disabled:opacity-35 sm:left-0 sm:-translate-x-1/2"
+            className={`${arrowBtnClass} absolute top-1/2 left-0 z-10 hidden -translate-x-1/2 -translate-y-1/2 sm:grid`}
           >
             <ChevronLeft className="h-5 w-5" aria-hidden />
           </button>
@@ -367,7 +368,7 @@ export function Testimonials() {
             onClick={() => scrollByCard(1)}
             disabled={!canNext}
             aria-label="Next reviews"
-            className="absolute top-1/2 right-1 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border bg-card text-navy shadow-lift transition-colors duration-300 hover:bg-navy hover:text-navy-foreground disabled:pointer-events-none disabled:opacity-35 sm:right-0 sm:translate-x-1/2"
+            className={`${arrowBtnClass} absolute top-1/2 right-0 z-10 hidden -translate-y-1/2 translate-x-1/2 sm:grid`}
           >
             <ChevronRight className="h-5 w-5" aria-hidden />
           </button>
@@ -404,6 +405,15 @@ export function Testimonials() {
                 </div>
               );
             })}
+          </div>
+          {/* Mobile: arrows sit under the cards instead of overlapping them */}
+          <div className="mt-4 flex items-center justify-center gap-3 sm:hidden">
+            <button type="button" onClick={() => scrollByCard(-1)} disabled={!canPrev} aria-label="Previous reviews" className={arrowBtnClass}>
+              <ChevronLeft className="h-5 w-5" aria-hidden />
+            </button>
+            <button type="button" onClick={() => scrollByCard(1)} disabled={!canNext} aria-label="Next reviews" className={arrowBtnClass}>
+              <ChevronRight className="h-5 w-5" aria-hidden />
+            </button>
           </div>
         </div>
 

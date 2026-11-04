@@ -7,6 +7,7 @@ const nav = [
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
   { label: "How It Works", href: "#how-it-works" },
+  { label: "Blog & Tips", href: "#blog-and-tips" },
   { label: "Reviews", href: "#reviews" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#quote" },
@@ -101,7 +102,7 @@ export function Header() {
         </div>
       </header>
 
-      <div id="mobile-nav" role="dialog" aria-modal="true" aria-label="Menu" className={`fixed inset-0 z-[60] lg:hidden ${open ? "visible" : "invisible"}`}>
+      <div id="mobile-nav" role="dialog" aria-modal="true" aria-label="Menu" className={`fixed inset-0 z-[60] overflow-hidden lg:hidden ${open ? "visible" : "invisible"}`}>
         <div onClick={() => setOpen(false)} className={`absolute inset-0 bg-navy/40 transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`} />
         <div className={`absolute right-0 top-0 flex h-full w-[86%] max-w-sm flex-col bg-background p-6 shadow-float transition-transform duration-300 ${open ? "translate-x-0" : "translate-x-full"}`}>
           <div className="flex items-center justify-between">

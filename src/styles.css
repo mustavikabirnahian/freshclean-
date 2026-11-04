@@ -153,7 +153,8 @@
 .is-visible .accent-line { transform: scaleX(1); }
 
 /* Decorative angled emerald lines flanking the Google rating panel; sweep in when the section reveals. */
-.rating-lines { display: flex; align-items: center; gap: 0.4rem; }
+/* Display comes from `hidden sm:flex` utilities in JSX; keep this rule display-free. */
+.rating-lines { align-items: center; gap: 0.4rem; }
 .rating-lines span {
   display: block; height: 3px; width: 1.35rem; border-radius: 9999px;
   background: var(--emerald); opacity: 0;
