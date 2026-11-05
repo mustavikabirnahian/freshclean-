@@ -8,3 +8,6 @@
 - [ ] Fix mobile carousel arrow overlap in reviews (move arrows below cards on small screens)
 - [x] Fix closed mobile menu causing 47px page overflow
 - [ ] Add FreshSpace Journal blog & tips section (5 cards, carousel, newsletter banner, nav item) per new brief
+
+## New request
+- [ ] Build dedicated Residential Cleaning page at /residential-cleaning from the supplied brief and reference image; add Services menu links and connect the existing residential category card and quote links.
