@@ -1,15 +1,29 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Categories } from "@/components/site/Categories";
-import { Hero, TrustBar, About, Services, BeforeAfter, HowItWorks, ServiceArea, Testimonials, Gallery, WhyUs } from "@/components/site/Sections";
+import {
+  Hero,
+  TrustBar,
+  About,
+  Services,
+  BeforeAfter,
+  HowItWorks,
+  ServiceArea,
+  Testimonials,
+  Gallery,
+  WhyUs,
+  FAQ,
+} from "@/components/site/Sections";
 import { Journal } from "@/components/site/Journal";
 import { QuoteForm } from "@/components/site/QuoteForm";
-import { FAQ, FinalCTA, Footer } from "@/components/site/Closing";
+import { FinalCTA, Footer } from "@/components/site/Closing";
 import { business, faqs } from "@/content/site";
 import { useReveal } from "@/hooks/use-reveal";
 
 const title = "FreshSpace Cleaning Co. | House & Office Cleaning in Austin, TX";
-const description = "Reliable residential and commercial cleaning in Austin and nearby areas. Insured, background-checked team and flexible scheduling. Get a free quote.";
+const description =
+  "Reliable residential and commercial cleaning in Austin and nearby areas. Insured, background-checked team and flexible scheduling. Get a free quote.";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -18,13 +32,26 @@ const jsonLd = {
   telephone: business.phone,
   email: business.email,
   areaServed: business.areas,
-  address: { "@type": "PostalAddress", addressLocality: business.city, addressRegion: business.region, addressCountry: "US" },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: business.city,
+    addressRegion: business.region,
+    addressCountry: "US",
+  },
   openingHours: "Mo-Sa 08:00-18:00",
 };
+
 const faqLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: f.a,
+    },
+  })),
 };
 
 export const Route = createFileRoute("/")({
@@ -47,27 +74,45 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   useReveal();
+
+  const [scratchDiscount, setScratchDiscount] = useState<number | null>(null);
+
   return (
     <>
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-navy focus:px-4 focus:py-2 focus:text-navy-foreground">Skip to content</a>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-navy focus:px-4 focus:py-2 focus:text-navy-foreground"
+      >
+        Skip to content
+      </a>
+
       <Header />
+
       <main id="main">
         <Hero />
         <TrustBar />
         <Categories />
         <About />
         <Services />
-        <BeforeAfter />
+
+        <BeforeAfter
+          discount={scratchDiscount}
+          onDiscountWon={setScratchDiscount}
+        />
+
         <HowItWorks />
         <ServiceArea />
         <Testimonials />
         <Gallery />
         <Journal />
         <WhyUs />
-        <QuoteForm />
+
+        <QuoteForm discount={scratchDiscount} />
+
         <FAQ />
         <FinalCTA />
       </main>
+
       <Footer />
     </>
   );

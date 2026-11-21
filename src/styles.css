@@ -189,3 +189,31 @@
   *, *::before, *::after { transition-duration: 0ms !important; animation-duration: 0ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+/* BRUSH INSTRUCTION ARROW */
+.brush-arrow-line {
+  stroke-dasharray: 180;
+  stroke-dashoffset: 180;
+  animation: brushArrowDraw 1.5s ease forwards;
+}
+
+@keyframes brushArrowDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* SERVICE AREA MAP LABELS */
+.service-area-tooltip {
+  background: #ffffff;
+  border: 1px solid rgba(6, 118, 73, 0.2);
+  border-radius: 999px;
+  color: #067649;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 10px;
+  box-shadow: 0 4px 14px rgba(16, 36, 65, 0.12);
+}
+
+.service-area-tooltip::before {
+  display: none;
+}

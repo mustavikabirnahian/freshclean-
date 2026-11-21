@@ -10,33 +10,103 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogAndTipsRouteImport } from './routes/blog-and-tips'
+import { Route as CommercialOfficeCleaningRouteImport } from './routes/commercial-office-cleaning'
+import { Route as DeepCleaningRouteImport } from './routes/deep-cleaning'
+import { Route as MoveInMoveOutRouteImport } from './routes/move-in-move-out'
+import { Route as ResidentialCleaningRouteImport } from './routes/residential-cleaning'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogAndTipsRoute = BlogAndTipsRouteImport.update({
+  id: '/blog-and-tips',
+  path: '/blog-and-tips',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommercialOfficeCleaningRoute =
+  CommercialOfficeCleaningRouteImport.update({
+    id: '/commercial-office-cleaning',
+    path: '/commercial-office-cleaning',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DeepCleaningRoute = DeepCleaningRouteImport.update({
+  id: '/deep-cleaning',
+  path: '/deep-cleaning',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoveInMoveOutRoute = MoveInMoveOutRouteImport.update({
+  id: '/move-in-move-out',
+  path: '/move-in-move-out',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResidentialCleaningRoute = ResidentialCleaningRouteImport.update({
+  id: '/residential-cleaning',
+  path: '/residential-cleaning',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/blog-and-tips': typeof BlogAndTipsRoute
+  '/commercial-office-cleaning': typeof CommercialOfficeCleaningRoute
+  '/deep-cleaning': typeof DeepCleaningRoute
+  '/move-in-move-out': typeof MoveInMoveOutRoute
+  '/residential-cleaning': typeof ResidentialCleaningRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/blog-and-tips': typeof BlogAndTipsRoute
+  '/commercial-office-cleaning': typeof CommercialOfficeCleaningRoute
+  '/deep-cleaning': typeof DeepCleaningRoute
+  '/move-in-move-out': typeof MoveInMoveOutRoute
+  '/residential-cleaning': typeof ResidentialCleaningRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/blog-and-tips': typeof BlogAndTipsRoute
+  '/commercial-office-cleaning': typeof CommercialOfficeCleaningRoute
+  '/deep-cleaning': typeof DeepCleaningRoute
+  '/move-in-move-out': typeof MoveInMoveOutRoute
+  '/residential-cleaning': typeof ResidentialCleaningRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/blog-and-tips'
+    | '/commercial-office-cleaning'
+    | '/deep-cleaning'
+    | '/move-in-move-out'
+    | '/residential-cleaning'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/blog-and-tips'
+    | '/commercial-office-cleaning'
+    | '/deep-cleaning'
+    | '/move-in-move-out'
+    | '/residential-cleaning'
+  id:
+    | '__root__'
+    | '/'
+    | '/blog-and-tips'
+    | '/commercial-office-cleaning'
+    | '/deep-cleaning'
+    | '/move-in-move-out'
+    | '/residential-cleaning'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlogAndTipsRoute: typeof BlogAndTipsRoute
+  CommercialOfficeCleaningRoute: typeof CommercialOfficeCleaningRoute
+  DeepCleaningRoute: typeof DeepCleaningRoute
+  MoveInMoveOutRoute: typeof MoveInMoveOutRoute
+  ResidentialCleaningRoute: typeof ResidentialCleaningRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +118,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog-and-tips': {
+      id: '/blog-and-tips'
+      path: '/blog-and-tips'
+      fullPath: '/blog-and-tips'
+      preLoaderRoute: typeof BlogAndTipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/commercial-office-cleaning': {
+      id: '/commercial-office-cleaning'
+      path: '/commercial-office-cleaning'
+      fullPath: '/commercial-office-cleaning'
+      preLoaderRoute: typeof CommercialOfficeCleaningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/deep-cleaning': {
+      id: '/deep-cleaning'
+      path: '/deep-cleaning'
+      fullPath: '/deep-cleaning'
+      preLoaderRoute: typeof DeepCleaningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/move-in-move-out': {
+      id: '/move-in-move-out'
+      path: '/move-in-move-out'
+      fullPath: '/move-in-move-out'
+      preLoaderRoute: typeof MoveInMoveOutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/residential-cleaning': {
+      id: '/residential-cleaning'
+      path: '/residential-cleaning'
+      fullPath: '/residential-cleaning'
+      preLoaderRoute: typeof ResidentialCleaningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlogAndTipsRoute: BlogAndTipsRoute,
+  CommercialOfficeCleaningRoute: CommercialOfficeCleaningRoute,
+  DeepCleaningRoute: DeepCleaningRoute,
+  MoveInMoveOutRoute: MoveInMoveOutRoute,
+  ResidentialCleaningRoute: ResidentialCleaningRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

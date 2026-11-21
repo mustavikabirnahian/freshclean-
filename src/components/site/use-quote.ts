@@ -1,4 +1,5 @@
-// Shared quote-request validation and submission state.
+
+ // Shared quote-request validation and submission state.
 // Used by both the hero quick-quote card and the full booking form.
 import { useRef, useState } from "react";
 import { z } from "zod";
@@ -15,11 +16,14 @@ export const quoteSchema = z.object({
   time: z.string().optional(),
   zip: z.string().trim().regex(/^\d{5}$/, "Enter a 5-digit ZIP code"),
   details: z.string().trim().max(1000, "Please keep it under 1000 characters").optional(),
+  discount: z.string().regex(/^(?:[5-9]|10|1[5-9]|20)$/, "Invalid discount").optional(),
 });
+
 export type QuoteErrors = Partial<Record<keyof z.infer<typeof quoteSchema>, string>>;
+export type QuoteRequest = z.infer<typeof quoteSchema>;
 
 /**
- * Validates only the requested subset of fields, then "submits".
+ * Validates only the requested subset of fields, then simulates submission.
  * TODO: connect to a secure backend or email service to actually deliver
  * requests — right now nothing is stored or sent anywhere.
  */
@@ -27,29 +31,57 @@ export function useQuoteSubmit(fields: (keyof z.infer<typeof quoteSchema>)[]) {
   const [errors, setErrors] = useState<QuoteErrors>({});
   const [sent, setSent] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [requestData, setRequestData] = useState<QuoteRequest | null>(null);
   const started = useRef(Date.now());
-  const restart = () => { setSent(false); started.current = Date.now(); };
+
+  const restart = () => {
+    setSent(false);
+    setRequestData(null);
+    started.current = Date.now();
+  };
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
     const fd = new FormData(e.currentTarget);
+
     // Spam guards: hidden honeypot field and minimum fill time.
     if (fd.get("company_website") || Date.now() - started.current < 2500) return;
+
     const mask: Record<string, true> = {};
     fields.forEach((f) => (mask[f] = true));
+
     const res = quoteSchema.pick(mask as never).safeParse(Object.fromEntries(fd));
+
     if (!res.success) {
       const errs: QuoteErrors = {};
-      res.error.issues.forEach((i) => { errs[i.path[0] as keyof QuoteErrors] ??= i.message; });
+
+      res.error.issues.forEach((i) => {
+        errs[i.path[0] as keyof QuoteErrors] ??= i.message;
+      });
+
       setErrors(errs);
-      const first = e.currentTarget.querySelector<HTMLElement>(`[name="${String(res.error.issues[0]?.path[0] ?? "")}"]`);
+
+      const first = e.currentTarget.querySelector<HTMLElement>(
+        `[name="${String(res.error.issues[0]?.path[0] ?? "")}"]`
+      );
+
       first?.focus();
       return;
     }
+
     setErrors({});
+
+    // Retain the validated quote details, including any earned discount.
+    // This is local demo state only; no backend request is made.
+    setRequestData(res.data);
+
     setBusy(true);
-    setTimeout(() => { setBusy(false); setSent(true); }, 700);
+    setTimeout(() => {
+      setBusy(false);
+      setSent(true);
+    }, 700);
   }
 
-  return { errors, sent, busy, onSubmit, restart };
+  return { errors, sent, busy, requestData, onSubmit, restart };
 }

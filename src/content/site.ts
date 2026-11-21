@@ -1,3 +1,4 @@
+
 // Edit business details here. Everything on the site reads from this file.
 export const business = {
   name: "FreshSpace Cleaning Co.",
@@ -34,13 +35,15 @@ export const trustItems = [
   { key: "guarantee", title: "Satisfaction Guarantee", text: "We're not happy until you are." },
 ] as const;
 
-// Sample reviews for the demo — fictional names, clearly marked. Replace with verified customer reviews before launch.
+// Sample reviews for the demo — fictional names and illustrative portraits.
+// Replace with verified customer reviews and approved photos before launch.
 export const testimonials = [
   {
     name: "Dana R.",
     initials: "DR",
+    image: "https://i.pravatar.cc/160?img=47",
     location: "Austin, TX",
-    rating: 5,
+    rating: 4.5,
     service: "Deep Cleaning",
     date: "3 weeks ago",
     text: "We booked a cleaning before family came to visit. The team arrived on time, worked through the whole house, and did a really nice job with the kitchen and bathrooms.",
@@ -48,8 +51,9 @@ export const testimonials = [
   {
     name: "Marcus T.",
     initials: "MT",
+    image: "https://i.pravatar.cc/160?img=12",
     location: "Round Rock, TX",
-    rating: 5,
+    rating: 4,
     service: "Residential Cleaning",
     date: "1 month ago",
     text: "I've been using their recurring cleaning service for a while now. Scheduling is straightforward, and it's nice coming home to a clean space after work.",
@@ -57,11 +61,42 @@ export const testimonials = [
   {
     name: "Priya S.",
     initials: "PS",
+    image: "https://i.pravatar.cc/160?img=44",
     location: "Cedar Park, TX",
-    rating: 5,
+    rating: 4.5,
     service: "Move-In / Move-Out",
     date: "2 months ago",
     text: "Needed help getting my apartment ready for a move. They took care of the floors, kitchen, and bathrooms. Made the whole process a lot easier.",
+  },
+  {
+    name: "Emily W.",
+    initials: "EW",
+    image: "https://i.pravatar.cc/160?img=49",
+    location: "Pflugerville, TX",
+    rating: 4,
+    service: "Residential Cleaning",
+    date: "2 months ago",
+    text: "The house felt fresh and tidy after the visit. I especially appreciated the attention given to the living room and kitchen surfaces.",
+  },
+  {
+    name: "James B.",
+    initials: "JB",
+    image: "https://i.pravatar.cc/160?img=13",
+    location: "Bee Cave, TX",
+    rating: 4.5,
+    service: "Deep Cleaning",
+    date: "3 months ago",
+    text: "We needed a more detailed clean than our usual routine. The bathrooms and floors looked noticeably better, and the booking process was simple.",
+  },
+  {
+    name: "Olivia M.",
+    initials: "OM",
+    image: "https://i.pravatar.cc/160?img=32",
+    location: "Lakeway, TX",
+    rating: 4,
+    service: "Office Cleaning",
+    date: "3 months ago",
+    text: "We wanted our workspace to feel cleaner and more organized. The service was convenient, and the team worked around our office schedule.",
   },
 ];
 
