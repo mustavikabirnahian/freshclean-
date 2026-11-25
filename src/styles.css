@@ -217,3 +217,28 @@
 .service-area-tooltip::before {
   display: none;
 }
+
+
+/* FreshSpace hero headline animation */
+@keyframes heroTextReveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-text-reveal {
+  display: inline-block;
+  animation: heroTextReveal 900ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-text-reveal {
+    animation: none;
+  }
+}

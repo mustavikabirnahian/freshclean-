@@ -1,4 +1,7 @@
-
+import garageCleaning from "@/assets/garage-cleaning.jpg";
+import shiftingRelocation from "@/assets/shifting-relocation.jpg";
+import outdoorGroundCleaning from "@/assets/outdoor-ground-cleaning.jpg";
+import balconyTerraceCleaning from "@/assets/balcony-terrace-cleaning.png";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -16,6 +19,24 @@ import {
   Waves,
   Trees,
   KeyRound,
+  PanelsTopLeft,
+PanelTop,
+Archive,
+Ruler,
+Lightbulb,
+DoorOpen,
+  
+  Armchair,
+  Layers,
+  Wind,
+  Refrigerator,
+  DoorClosed,
+ 
+  
+  
+  Calculator,
+ 
+
 } from "lucide-react";
 
 import { Header } from "@/components/site/Header";
@@ -122,71 +143,68 @@ const services = [
 // PROPERTY CHECKLIST DATA
 const propertyChecklist = [
   {
-    title: "Kitchen",
-    image: kitchenImage,
+    title: "Garage Cleaning",
+    image: garageCleaning,
     tasks: [
-      "Countertops and backsplash",
-      "Sink and faucet detailing",
-      "Cabinet doors and handles",
-      "Exterior appliance surfaces",
-      "Accessible shelves and corners",
-      "Wipe reachable surfaces",
-      "Sweep and mop floors",
+      "Sweep and mop garage floors",
+      "Remove visible dust and cobwebs",
+      "Wipe accessible shelves and surfaces",
+      "Clean garage doors and handles",
+      "Dust accessible storage areas",
+      "Clean reachable baseboards",
+      "Collect agreed loose debris",
     ],
   },
   {
-    title: "Bathrooms",
-    image: bathroomImage,
+    title: "Shifting & Relocation",
+    image: shiftingRelocation,
     tasks: [
-      "Shower walls and bathtub",
-      "Toilet and surrounding area",
-      "Sink and countertop",
-      "Faucets and fixtures",
-      "Mirrors and accessible glass",
-      "Wipe reachable surfaces",
-      "Sweep and mop floors",
-    ],
-  },
-  {
-    title: "Bedrooms & Living Areas",
-    image: residentialHero,
-    tasks: [
-      "Dust accessible furniture and shelves",
-      "Wipe reachable baseboards",
+      "Clean empty rooms before moving",
+      "Wipe cabinets and storage spaces",
+      "Clean kitchen and bathroom surfaces",
+      "Wipe doors, frames and handles",
       "Clean reachable window sills",
-      "Wipe doors and handles",
-      "Clean accessible light switches",
       "Vacuum carpets and rugs",
       "Sweep and mop hard floors",
     ],
   },
   {
-    title: "Outdoor & Pool Areas",
-    image: deepCleaningImage,
+    title: "Outdoor Ground Cleaning",
+    image: outdoorGroundCleaning,
     tasks: [
-      "Sweep patios and walkways",
-      "Remove visible loose debris",
+      "Sweep driveways and walkways",
+      "Remove loose leaves and debris",
+      "Clean accessible patio surfaces",
+      "Sweep outdoor steps and entryways",
       "Wipe accessible outdoor furniture",
-      "Clean agreed poolside surfaces",
-      "Tidy outdoor entry areas",
-      "Wipe accessible surfaces",
-      "Check agreed outdoor areas",
+      "Tidy agreed outdoor areas",
+      "Collect agreed outdoor debris",
+    ],
+  },
+  {
+    title: "Balcony & Terrace Cleaning",
+    image: balconyTerraceCleaning,
+    tasks: [
+      "Sweep and mop balcony floors",
+      "Wipe accessible railings",
+      "Clean balcony doors and glass",
+      "Remove visible dust and cobwebs",
+      "Clear loose leaves and debris",
+      "Wipe accessible outdoor surfaces",
+      "Clean agreed terrace areas",
     ],
   },
 ];
 
 // OPTIONAL ADD-ON SERVICES
 const addOns = [
-  "Inside oven cleaning",
-  "Inside refrigerator cleaning",
-  "Interior window cleaning",
-  "Inside cabinets and drawers",
-  "Extra baseboard detailing",
-  "Garage sweeping",
-  "Patio and walkway cleaning",
-  "Additional poolside surface cleaning",
+  "Inside Cabinet & Drawer Cleaning",
+  "Window Tracks & Sills Cleaning",
+  "Closet & Storage Cleaning",
+  "Detailed Baseboard Cleaning",
+  "Light Fixture & Ceiling Fan Cleaning",
+  "Door, Frame & Handle Cleaning",
 ];
-
 // CLEANING OCCASIONS
 const cleaningOccasions = [
   {
@@ -373,7 +391,7 @@ function MoveInMoveOutPage() {
 
       <main id="main">
         {/* SECTION: HERO */}
-        <section className="relative overflow-hidden bg-[#0F233F] py-16 md:py-24">
+        <section className="relative overflow-hidden bg-[#102441] py-16 md:py-24">
           <div className="container-site grid items-center gap-12 lg:grid-cols-[1fr_0.95fr] lg:gap-16">
             <div>
               <p className="eyebrow">
@@ -451,15 +469,18 @@ function MoveInMoveOutPage() {
         </section>
 
 
+
 {/* SECTION: MAIN SERVICE CARDS */}
-<section className="bg-[#102441] py-20 md:py-28">
+<section className="bg-[linear-gradient(180deg,#EAF0F6_0%,#F8FAFC_45%,#EAF0F6_100%)] py-20 md:py-28">
   <div className="container-site">
     <div className="mx-auto max-w-2xl text-center">
-      <p className="eyebrow text-[#B8D2C5]">Our Property Cleaning Services</p>
-      <h2 className="mt-3 text-3xl font-medium text-[#F8F6F0] sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
+      <p className="eyebrow">Our Property Cleaning Services</p>
+
+      <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
         A Cleaner Property for Every Transition
       </h2>
-      <p className="mt-4 text-base text-[#D5DFE9] sm:text-lg">
+
+      <p className="mt-4 text-base text-muted-foreground sm:text-lg">
         From preparing a new home to refreshing a rental property,
         choose the cleaning service that fits your next step.
       </p>
@@ -471,36 +492,40 @@ function MoveInMoveOutPage() {
           key={service.number}
           className="service-shadow group relative transition-transform duration-300 hover:-translate-y-1.5"
         >
-          <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-[#34516D] bg-[#173553] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition-colors duration-300 hover:border-[#B8D2C5]/50 hover:bg-[#1D4265]">
+          <article className="relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-white/90 bg-[linear-gradient(rgba(16,36,65,0.13),rgba(16,36,65,0.13)),#FDFDFD] shadow-[0_12px_35px_rgba(16,36,65,0.10)] backdrop-blur-2xl transition-all duration-500 hover:border-navy/30 hover:bg-white/90 hover:shadow-[0_20px_45px_rgba(16,36,65,0.16)]">
+
+            {/* IMAGE */}
             <div className="p-3 pb-0">
-              <div className="overflow-hidden rounded-xl">
+              <div className="overflow-hidden rounded-[1.1rem] border border-white/80 shadow-sm">
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
             </div>
 
+            {/* CONTENT */}
             <div className="flex flex-1 flex-col p-6 pb-8">
-              <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B8D2C5]">
+              <span className="w-fit rounded-full border border-navy/20 bg-[#102441] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-sm sm:text-xs">
                 Service {service.number}
               </span>
 
-              <h3 className="mt-2 text-xl font-medium text-[#F8F6F0]">
+              <h3 className="mt-3 text-xl font-semibold text-[#102441]">
                 {service.title}
               </h3>
 
-              <p className="mt-1 text-sm font-semibold text-[#B8D2C5]">
+              <p className="mt-1 text-sm font-semibold text-[#102441]">
                 {service.subtitle}
               </p>
 
-              <p className="mt-3 text-[15px] leading-relaxed text-[#D5DFE9]">
+              <p className="mt-3 text-[15px] leading-relaxed text-[#52677F]">
                 {service.description}
               </p>
 
-              <div className="mt-6 border-t border-[#49627B] pt-5">
-                <h4 className="mb-4 text-sm font-semibold text-[#F8F6F0]">
+              {/* INCLUDED TASKS */}
+              <div className="mt-6 border-t border-[#DCE5E8]/90 pt-5">
+                <h4 className="mb-4 text-sm font-extrabold text-[#102441]">
                   What's included
                 </h4>
 
@@ -508,9 +533,9 @@ function MoveInMoveOutPage() {
                   {service.tasks.map((task) => (
                     <li
                       key={task}
-                      className="flex items-start gap-2.5 text-sm font-medium leading-relaxed text-[#D5DFE9]"
+                      className="flex items-start gap-2.5 text-sm font-medium leading-relaxed text-[#52677F]"
                     >
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#B8D2C5]" />
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#102441]" />
                       <span>{task}</span>
                     </li>
                   ))}
@@ -518,13 +543,15 @@ function MoveInMoveOutPage() {
               </div>
             </div>
 
+            {/* FOLDED CORNER */}
             <span
               aria-hidden
-              className="absolute bottom-0 right-0 h-16 w-16 bg-[#102441] [clip-path:polygon(100%_0,100%_100%,0_100%)]"
+              className="absolute bottom-0 right-0 h-16 w-16 bg-surface [clip-path:polygon(100%_0,100%_100%,0_100%)]"
             />
           </article>
 
-          <span className="absolute bottom-0 right-0 grid h-14 w-14 translate-x-[30%] translate-y-[30%] place-items-center rounded-full bg-[#B8D2C5] text-[#102441] shadow-lift ring-4 ring-[#102441] transition-transform duration-300 group-hover:scale-110">
+          {/* FLOATING ICON */}
+          <span className="absolute bottom-0 right-0 grid h-14 w-14 translate-x-[30%] translate-y-[30%] place-items-center rounded-full bg-navy text-blue-100 shadow-lift ring-4 ring-surface transition-transform duration-300 group-hover:scale-110">
             {service.number === "01" ? (
               <Home className="h-6 w-6" strokeWidth={1.6} />
             ) : service.number === "02" ? (
@@ -542,241 +569,522 @@ function MoveInMoveOutPage() {
 </section>
 
 
-        {/* SECTION: PROPERTY CHECKLIST */}
-        <section className="py-16 md:py-24">
-          <div className="container-site">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="eyebrow">Property Cleaning Checklist</p>
-              <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
-                What Gets Cleaned in Each Area?
-              </h2>
-              <p className="mt-4 leading-7 text-muted-foreground">
-                Take a closer look at the rooms and property areas that can
-                receive attention during your move-in, move-out or rental
-                cleaning visit.
-              </p>
-            </div>
 
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {propertyChecklist.map((room) => (
-                <article
-                  key={room.title}
-                  className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-soft"
+{/* SECTION: PROPERTY CHECKLIST */}
+<section className="relative overflow-hidden bg-[#F2F3F5] py-16 md:py-24">
+  <div className="container-site">
+    <div className="mx-auto max-w-2xl text-center">
+      <p className="eyebrow">Additional Property Cleaning Services</p>
+      <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
+        More Ways We Help Keep Your Property Clean
+      </h2>
+      <p className="mt-4 leading-7 text-muted-foreground">
+        From garages and relocation cleaning to outdoor spaces and
+        terraces, explore additional cleaning services for your property.
+      </p>
+    </div>
+
+    <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
+      {propertyChecklist.map((room) => (
+        <article
+          key={room.title}
+          className="group relative min-h-[330px] overflow-hidden rounded-[1.8rem] border-[3px] border-white/90 bg-[#DCEAF7] shadow-[0_14px_35px_rgba(16,36,65,0.14)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_22px_45px_rgba(16,36,65,0.20)]"
+          style={{
+            backgroundImage: `linear-gradient(90deg, rgba(220,234,247,0.96) 0%, rgba(220,234,247,0.88) 43%, rgba(220,234,247,0.48) 72%, rgba(220,234,247,0.12) 100%), url("${room.image}")`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-blue-200/10 backdrop-blur-[1px]" />
+
+          <div className="relative z-10 flex min-h-[330px] max-w-[75%] flex-col p-6 sm:p-7">
+            <h3 className="text-2xl font-bold text-[#102441] sm:text-3xl">
+              {room.title}
+            </h3>
+
+            <ul className="mt-5 space-y-3">
+              {room.tasks.map((task) => (
+                <li
+                  key={task}
+                  className="flex items-start gap-3 text-sm font-medium leading-5 text-[#263F5B] sm:text-base"
                 >
-                  <img
-                    src={room.image}
-                    alt={`${room.title} cleaning`}
-                    className="h-48 w-full object-cover"
-                  />
-                  <div className="p-5">
-                    <h3 className="text-xl font-semibold text-emerald">
-                      {room.title}
-                    </h3>
-                    <ul className="mt-4 space-y-3">
-                      {room.tasks.map((task) => (
-                        <li
-                          key={task}
-                          className="flex items-start gap-2 text-sm font-medium leading-5 text-foreground"
-                        >
-                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald" />
-                          {task}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#102441]" />
+                  <span>{task}</span>
+                </li>
               ))}
-            </div>
+            </ul>
 
-            <p className="mt-7 text-center text-xs leading-6 text-muted-foreground">
-              Final tasks depend on the selected service, property condition
-              and agreed cleaning checklist. Outdoor and poolside cleaning
-              covers agreed accessible surfaces only.
+            <a
+              href="#quote"
+              className="mt-6 inline-flex w-fit items-center justify-center rounded-full border border-[#102441]/20 bg-[#102441] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#1D4265]"
+            >
+              Check Availability
+            </a>
+          </div>
+
+          <div className="pointer-events-none absolute inset-0 rounded-[1.6rem] ring-1 ring-inset ring-white/40" />
+        </article>
+      ))}
+    </div>
+
+    <p className="mt-7 text-center text-xs leading-6 text-[#52647A]">
+      Service availability depends on property condition, accessibility
+      and the agreed cleaning checklist. Additional work may require
+      separate pricing.
+    </p>
+  </div>
+</section>
+
+
+{/* SECTION: ADD-ONS */}
+<section className="relative isolate overflow-hidden bg-[#F2F3F5] py-20 md:py-28">
+  {/* Decorative house watermark */}
+  <div
+    aria-hidden="true"
+    className="pointer-events-none absolute -left-8 top-0 -z-10 h-[420px] w-[650px] max-w-[65%] text-[#102441]/10"
+  >
+    <svg
+      viewBox="0 0 600 420"
+      fill="none"
+      className="h-full w-full"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M55 210L290 25L525 210"
+        stroke="currentColor"
+        strokeWidth="28"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M115 165V370H465V165"
+        stroke="currentColor"
+        strokeWidth="22"
+        strokeLinejoin="round"
+      />
+      <rect x="260" y="215" width="30" height="30" rx="5" fill="currentColor" />
+      <rect x="300" y="215" width="30" height="30" rx="5" fill="currentColor" />
+      <rect x="260" y="255" width="30" height="30" rx="5" fill="currentColor" />
+      <rect x="300" y="255" width="30" height="30" rx="5" fill="currentColor" />
+    </svg>
+  </div>
+
+  {/* Decorative sparkles */}
+  <div className="pointer-events-none absolute left-[45%] top-12 -z-10 text-[#102441]/10">
+    <Sparkles className="h-14 w-14" />
+  </div>
+  <div className="pointer-events-none absolute left-[49%] top-28 -z-10 text-[#102441]/10">
+    <Sparkles className="h-9 w-9" />
+  </div>
+
+  <div className="container-site relative z-10 grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+    {/* Left content */}
+    <div>
+      <p className="flex items-center gap-3 text-sm font-bold tracking-wide text-[#102441]">
+        <span className="h-[2px] w-12 rounded-full bg-[#102441]" />
+        Additional Details
+      </p>
+
+      <h2 className="mt-5 text-4xl font-semibold tracking-tight text-navy sm:text-5xl md:text-6xl md:leading-[1.1]">
+        Need a Little Extra Attention?
+      </h2>
+
+      <p className="mt-6 max-w-lg text-base leading-8 text-navy/80 sm:text-lg">
+        Some areas need more time and specialized attention. Ask
+        about these additional tasks when preparing your move-in
+        or move-out cleaning quote.
+      </p>
+
+      <a
+        href="#quote"
+        className="group mt-8 inline-flex items-center gap-4 rounded-full bg-gradient-to-r from-[#102441] to-[#24466F] px-8 py-4 text-base font-bold text-white shadow-[0_12px_28px_rgba(16,36,65,0.22)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_35px_rgba(16,36,65,0.30)]"
+      >
+        Add to My Cleaning Plan
+        <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+      </a>
+    </div>
+
+    {/* Right glass cards */}
+    <div className="grid gap-4 sm:grid-cols-2">
+      {addOns.map((item, index) => (
+        <div
+          key={item}
+          className="group relative flex min-h-[88px] items-center gap-4 overflow-hidden rounded-[1.5rem] border border-[#102441]/10 bg-white/55 px-4 py-4 shadow-[0_8px_25px_rgba(16,36,65,0.045)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[#102441]/30 hover:bg-white/80 hover:shadow-[0_14px_30px_rgba(16,36,65,0.12)] sm:px-5"
+        >
+          {/* Soft glass highlight */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-blue-100/30" />
+
+          {/* Navy icon circle */}
+          <span className="relative grid h-14 w-14 shrink-0 place-items-center rounded-full border border-blue-100 bg-gradient-to-br from-blue-50 to-blue-100/80 text-[#102441] shadow-[0_4px_14px_rgba(16,36,65,0.08)] transition-transform duration-300 group-hover:scale-110">
+            {index === 0 ? (
+              <PanelsTopLeft className="h-6 w-6" />
+            ) : index === 1 ? (
+              <PanelTop className="h-6 w-6" />
+            ) : index === 2 ? (
+              <Archive className="h-6 w-6" />
+            ) : index === 3 ? (
+              <Ruler className="h-6 w-6" />
+            ) : index === 4 ? (
+              <Lightbulb className="h-6 w-6" />
+            ) : (
+              <DoorOpen className="h-6 w-6" />
+            )}
+          </span>
+
+          {/* Add-on title */}
+          <span className="relative flex-1 text-sm font-bold leading-5 text-navy sm:text-[15px]">
+            {item}
+          </span>
+
+          {/* Arrow circle */}
+          <span
+            aria-hidden="true"
+            className="relative grid h-10 w-10 shrink-0 place-items-center rounded-full border border-blue-100 bg-blue-50/80 text-[#102441] transition-all duration-300 group-hover:border-[#102441] group-hover:bg-[#102441] group-hover:text-white"
+          >
+            <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5" />
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
+
+
+{/* SECTION: CLEANING OCCASIONS */}
+<section className="relative overflow-hidden bg-[#F2F3F5] py-16 md:py-24">
+  {/* Soft background glow */}
+  <div className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-[#24466F]/15 blur-[100px]" />
+  <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-blue-300/20 blur-[110px]" />
+
+  <div className="container-site relative z-10">
+    {/* Section heading */}
+    <div className="mx-auto max-w-2xl text-center">
+      <p className="eyebrow">When You Need It</p>
+
+      <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
+        When Is Property Transition Cleaning a Good Fit?
+      </h2>
+
+      <p className="mt-4 leading-7 text-muted-foreground">
+        Whether you're moving, preparing a rental or refreshing
+        outdoor areas, we can discuss a cleaning plan for your
+        property.
+      </p>
+    </div>
+
+    {/* Cleaning occasion glass cards */}
+    <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {cleaningOccasions.map((occasion, index) => (
+        <article
+          key={occasion.title}
+          className={`group relative flex min-h-[300px] flex-col overflow-hidden rounded-[1.8rem] border p-7 backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 ${
+            index === 3
+              ? "border-white bg-[#F7F8FA] text-navy shadow-[0_12px_35px_rgba(16,36,65,0.08)] hover:border-blue-300/80 hover:shadow-[0_20px_40px_rgba(16,36,65,0.12)]"
+              : "border-blue-300/50 bg-gradient-to-br from-[#24466F] via-[#18375D] to-[#102441] text-white shadow-[0_20px_45px_rgba(16,36,65,0.22)] hover:shadow-[0_25px_50px_rgba(16,36,65,0.32)]"
+          }`}
+        >
+          {/* Glass highlight */}
+          <div className="pointer-events-none absolute inset-0 rounded-[1.7rem] bg-gradient-to-br from-white/20 via-transparent to-blue-100/10" />
+
+          {/* Icon */}
+          <div
+            className={`relative grid h-14 w-14 place-items-center rounded-full border shadow-sm transition-transform duration-500 group-hover:scale-110 ${
+              index === 3
+                ? "border-white bg-white/80 text-[#102441]"
+                : "border-white/70 bg-white text-[#102441]"
+            }`}
+          >
+            {index === 0 ? (
+              <KeyRound className="h-6 w-6" />
+            ) : index === 1 ? (
+              <Truck className="h-6 w-6" />
+            ) : index === 2 ? (
+              <Home className="h-6 w-6" />
+            ) : (
+              <Trees className="h-6 w-6" />
+            )}
+          </div>
+
+          {/* Card content */}
+          <div className="relative mt-8">
+            <h3
+              className={`text-xl font-bold tracking-tight ${
+                index === 3 ? "text-[#102441]" : "text-white"
+              }`}
+            >
+              {occasion.title}
+            </h3>
+
+            <p
+              className={`mt-3 text-sm font-medium leading-6 ${
+                index === 3 ? "text-[#52677F]" : "text-white/85"
+              }`}
+            >
+              {occasion.text}
             </p>
           </div>
-        </section>
 
-        {/* SECTION: ADD-ONS */}
-        <section className="bg-navy py-16 text-navy-foreground md:py-20">
-          <div className="container-site grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <p className="eyebrow">Additional Details</p>
-              <h2 className="mt-3 text-3xl font-medium sm:text-4xl">
-                Need a Little Extra Attention?
-              </h2>
-              <p className="mt-5 max-w-lg leading-7 text-navy-foreground/75">
-                Every property has different needs. Ask about additional
-                cleaning tasks when preparing your move-in, move-out or
-                rental cleaning quote.
-              </p>
-              <a
-                href="#quote"
-                className="mt-7 inline-flex items-center gap-2 rounded-full bg-emerald px-6 py-3 font-semibold text-primary-foreground transition hover:bg-emerald-dark"
-              >
-                Add to My Cleaning Plan
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
+          {/* Bottom label and arrow */}
+          <div className="relative mt-auto flex items-center justify-between gap-3 pt-8">
+            <span
+              className={`text-[11px] font-bold uppercase tracking-[0.16em] ${
+                index === 3 ? "text-[#52677F]/75" : "text-white/70"
+              }`}
+            >
+              0{index + 1} / {occasion.title}
+            </span>
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              {addOns.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-3 rounded-xl border border-navy-foreground/15 bg-navy-foreground/5 p-4"
-                >
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-emerald/15 text-emerald-bright">
-                    <Sparkles className="h-4 w-4" />
-                  </span>
-                  <span className="text-sm font-medium">{item}</span>
-                </div>
-              ))}
-            </div>
+            <span
+              aria-hidden="true"
+              className={`grid h-11 w-11 shrink-0 place-items-center rounded-full border transition-all duration-300 group-hover:translate-x-1 ${
+                index === 3
+                  ? "border-[#102441]/20 bg-white text-[#102441] group-hover:border-[#102441] group-hover:bg-[#102441] group-hover:text-white"
+                  : "border-white/40 bg-white/10 text-white group-hover:bg-white group-hover:text-[#102441]"
+              }`}
+            >
+              <span className="text-xl leading-none">↗</span>
+            </span>
           </div>
-        </section>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
 
-        {/* SECTION: CLEANING OCCASIONS */}
-        <section className="bg-white py-16 md:py-20">
-          <div className="container-site">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="eyebrow">When You Need It</p>
-              <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
-                When Is Property Transition Cleaning a Good Fit?
-              </h2>
-              <p className="mt-4 leading-7 text-muted-foreground">
-                Whether you're moving, preparing a rental or refreshing
-                outdoor areas, we can discuss a cleaning plan for your
-                property.
-              </p>
-            </div>
 
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {cleaningOccasions.map((occasion, index) => (
-                <div
-                  key={occasion.title}
-                  className="rounded-2xl border border-border bg-background p-6 text-center transition hover:border-emerald/50 hover:shadow-soft"
-                >
-                  <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-[#102441] text-[#B8D2C5]">
-                    {index === 0 ? (
-                      <KeyRound className="h-5 w-5" />
-                    ) : index === 1 ? (
-                      <Truck className="h-5 w-5" />
-                    ) : index === 2 ? (
-                      <Home className="h-5 w-5" />
-                    ) : (
-                      <Trees className="h-5 w-5" />
-                    )}
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold text-navy">
-                    {occasion.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    {occasion.text}
-                  </p>
+
+
+{/* SECTION: HOW IT WORKS */}
+<section id="how-it-works" className="relative overflow-hidden bg-white py-16 md:py-24">
+  <div className="container-site relative">
+    {/* Section heading */}
+    <div className="mx-auto max-w-3xl text-center">
+      <p className="flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#102441]">
+        <span className="h-px w-12 bg-[#102441]" />
+        Simple Process
+        <span className="h-px w-12 bg-[#102441]" />
+      </p>
+
+      <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight text-[#102441] sm:text-5xl md:text-6xl">
+        Getting Started Is Easy
+      </h2>
+
+      <p className="mt-5 text-base leading-7 text-[#52677F] sm:text-lg">
+        Follow these simple steps to book your deep cleaning service.
+      </p>
+    </div>
+
+    {/* Cards and connecting line */}
+    <div className="relative mt-16 md:mt-20">
+      {/* Dashed connecting path */}
+      <svg
+        aria-hidden="true"
+        className="pointer-events-none absolute left-0 top-8 z-0 hidden h-40 w-full overflow-visible xl:block"
+        viewBox="0 0 1200 160"
+        fill="none"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M70 35 C180 -20 210 120 330 85 S510 5 620 75 S810 135 920 55 S1080 5 1140 65"
+          stroke="#A9C8E8"
+          strokeWidth="3"
+          strokeDasharray="10 10"
+          strokeLinecap="round"
+        />
+      </svg>
+
+      <div className="relative z-10 grid gap-10 sm:grid-cols-2 xl:grid-cols-4 xl:gap-7">
+        {[
+          {
+            number: "01",
+            title: "Tell Us What Needs Attention",
+            text: "Share your home details and the areas you want deep cleaned.",
+            icon: Home,
+            rotate: "xl:-rotate-2",
+          },
+          {
+            number: "02",
+            title: "Receive Your Estimate",
+            text: "Get an estimate based on your home's needs and requested tasks.",
+            icon: Calculator,
+            rotate: "xl:rotate-2 xl:translate-y-8",
+          },
+          {
+            number: "03",
+            title: "Choose a Date",
+            text: "Discuss an available date and a convenient time for your visit.",
+            icon: CalendarDays,
+            rotate: "xl:-rotate-2 xl:translate-y-2",
+          },
+          {
+            number: "04",
+            title: "Enjoy a Detailed Clean",
+            text: "Your agreed cleaning checklist guides the cleaning visit.",
+            icon: Sparkles,
+            rotate: "xl:rotate-2 xl:translate-y-5",
+          },
+        ].map((step) => {
+          const Icon = step.icon;
+
+          return (
+            <article
+              key={step.number}
+              className={`group relative mx-auto w-full max-w-[191px] transition-all duration-500 hover:-translate-y-2 hover:rotate-0 ${step.rotate}`}
+            >
+              {/* Pin */}
+              <div className="absolute -top-5 left-1/2 z-20 -translate-x-1/2 scale-75">
+                <div className="relative mx-auto h-11 w-9">
+                  <span className="absolute bottom-0 left-1/2 h-5 w-5 -translate-x-1/2 rounded-full bg-[#102441] shadow-[0_5px_8px_rgba(16,36,65,0.30)]" />
+                  <span className="absolute left-1/2 top-0 h-8 w-8 -translate-x-1/2 rounded-full border border-[#A9C8E8] bg-gradient-to-br from-[#A9C8E8] via-[#24466F] to-[#102441] shadow-[0_5px_10px_rgba(16,36,65,0.35)]" />
+                  <span className="absolute left-[9px] top-[5px] h-2 w-2 rounded-full bg-white/70 blur-[1px]" />
                 </div>
-              ))}
-            </div>
+              </div>
+
+              {/* Note card */}
+              <div className="relative min-h-[233px] overflow-hidden rounded-[1.7rem] border-[5px] border-white bg-gradient-to-br from-white via-[#F7FAFD] to-[#EAF0F7] p-5 pt-9 shadow-[0_18px_35px_rgba(16,36,65,0.12)] ring-1 ring-[#DCE5EF] transition-all duration-500 group-hover:shadow-[0_24px_45px_rgba(16,36,65,0.18)]">
+                {/* Inner border */}
+                <div className="pointer-events-none absolute inset-2 rounded-[1.3rem] border border-[#DCE5EF]" />
+
+                {/* Card icon */}
+                <span className="absolute right-5 top-6 grid h-10 w-10 place-items-center rounded-xl border border-[#DCE5EF] bg-white text-[#102441] shadow-[0_5px_15px_rgba(16,36,65,0.10)] transition-transform duration-300 group-hover:scale-110">
+                  <Icon className="h-5 w-5" strokeWidth={1.8} />
+                </span>
+
+                {/* Number */}
+                <span className="relative block font-display text-4xl font-bold tracking-tight text-[#24466F]">
+                  {step.number}
+                </span>
+
+                {/* Text */}
+                <h3 className="relative mt-4 max-w-[175px] text-base font-bold leading-snug text-[#102441]">
+                  {step.title}
+                </h3>
+
+                <p className="relative mt-3 text-xs font-medium leading-6 text-[#52677F]">
+                  {step.text}
+                </p>
+
+                {/* Bottom accent */}
+                <span className="absolute bottom-5 left-5 h-[3px] w-11 rounded-full bg-gradient-to-r from-[#102441] to-[#A9C8E8]" />
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+        
+{/* SECTION: WHY FRESHSPACE */}
+<section className="relative overflow-hidden bg-[#F8F6F0] py-16 md:py-24">
+  {/* Soft navy-blue background glow */}
+  <div className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-[#24466F]/15 blur-[110px]" />
+  <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-blue-300/20 blur-[120px]" />
+
+  <div className="container-site relative z-10">
+    {/* Section heading */}
+    <div className="mx-auto max-w-2xl text-center">
+      <p className="eyebrow">The FreshSpace Approach</p>
+
+      <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
+        More Attention to Every Detail
+      </h2>
+
+      <p className="mt-4 leading-7 text-muted-foreground">
+        A thoughtful deep cleaning experience starts with a clear
+        plan and an understanding of what matters in your home.
+      </p>
+    </div>
+
+    {/* Glass cards */}
+    <div className="mt-12 grid gap-6 md:grid-cols-3">
+      {[
+        {
+          icon: Home,
+          title: "Focused on Your Space",
+          text: "Choose the rooms and areas that need the most attention.",
+        },
+        {
+          icon: Sparkles,
+          title: "Detailed Cleaning Tasks",
+          text: "Give commonly overlooked surfaces and built-up dirt extra attention.",
+        },
+        {
+          icon: ShieldCheck,
+          title: "Clear Expectations",
+          text: "Understand which tasks are included in your agreed cleaning checklist.",
+        },
+      ].map(({ icon: Icon, title, text }, index) => (
+        <article
+          key={title}
+          className={`group relative flex min-h-[290px] flex-col overflow-hidden rounded-[1.8rem] border p-7 backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 ${
+            index === 0
+              ? "border-white bg-white text-[#102441] shadow-[0_14px_35px_rgba(16,36,65,0.09)] hover:border-blue-300/80 hover:shadow-[0_22px_45px_rgba(16,36,65,0.13)]"
+              : "border-blue-300/70 bg-gradient-to-br from-[#24466F] via-[#18375D] to-[#102441] text-white shadow-[0_20px_45px_rgba(16,36,65,0.22)] hover:shadow-[0_25px_50px_rgba(16,36,65,0.30)]"
+          }`}
+        >
+          {/* Glass highlight */}
+          <div className="pointer-events-none absolute inset-0 rounded-[1.7rem] bg-gradient-to-br from-white/20 via-transparent to-blue-100/10" />
+
+          {/* Icon */}
+          <div
+            className={`relative grid h-14 w-14 place-items-center rounded-full border shadow-sm transition-transform duration-500 group-hover:scale-110 ${
+              index === 0
+                ? "border-blue-100 bg-blue-100/70 text-[#102441]"
+                : "border-white/80 bg-white text-[#102441]"
+            }`}
+          >
+            <Icon className="h-6 w-6" />
           </div>
-        </section>
 
-        {/* SECTION: HOW IT WORKS */}
-        <section id="how-it-works" className="py-16 md:py-20">
-          <div className="container-site">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="eyebrow">Simple Process</p>
-              <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
-                Getting Started Is Easy
-              </h2>
-            </div>
+          {/* Content */}
+          <div className="relative mt-8">
+            <h3
+              className={`text-xl font-bold tracking-tight ${
+                index === 0 ? "text-[#102441]" : "text-white"
+              }`}
+            >
+              {title}
+            </h3>
 
-            <div className="mt-12 grid gap-8 md:grid-cols-4">
-              {[
-                {
-                  number: "01",
-                  title: "Tell Us About Your Property",
-                  text: "Share your property details, cleaning needs and the areas you want us to focus on.",
-                },
-                {
-                  number: "02",
-                  title: "Receive Your Estimate",
-                  text: "Get an estimate based on the property, its condition and your requested tasks.",
-                },
-                {
-                  number: "03",
-                  title: "Choose a Date",
-                  text: "Discuss an available date and a convenient time for your cleaning visit.",
-                },
-                {
-                  number: "04",
-                  title: "Enjoy a Fresh Space",
-                  text: "Our agreed cleaning checklist guides the visit and helps prepare your property.",
-                },
-              ].map((step) => (
-                <div key={step.number} className="relative text-center">
-                  <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-[#102441] font-display text-xl font-semibold text-[#B8D2C5]">
-                    {step.number}
-                  </span>
-                  <h3 className="mt-5 text-xl font-medium text-navy">
-                    {step.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                    {step.text}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <p
+              className={`mt-3 text-sm font-semibold leading-7 ${
+                index === 0 ? "text-[#52677F]" : "text-white/90"
+              }`}
+            >
+              {text}
+            </p>
           </div>
-        </section>
 
-        {/* SECTION: WHY FRESHSPACE */}
-        <section className="bg-white py-16 md:py-20">
-          <div className="container-site">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="eyebrow">The FreshSpace Approach</p>
-              <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
-                More Attention to Every Property
-              </h2>
-              <p className="mt-4 leading-7 text-muted-foreground">
-                A smooth property transition starts with a clear plan and
-                an understanding of what your space needs.
-              </p>
-            </div>
+          {/* Bottom decorative detail */}
+          <div className="relative mt-auto flex items-center justify-between pt-7">
+            <span
+              className={`h-[3px] w-12 rounded-full ${
+                index === 0 ? "bg-[#24466F]/70" : "bg-white/90"
+              }`}
+            />
 
-            <div className="mt-10 grid gap-5 md:grid-cols-3">
-              {[
-                {
-                  icon: Home,
-                  title: "Focused on Your Property",
-                  text: "Choose the rooms, surfaces and outdoor areas that need attention.",
-                },
-                {
-                  icon: Sparkles,
-                  title: "A Clear Cleaning Checklist",
-                  text: "Understand which cleaning tasks are included before the visit.",
-                },
-                {
-                  icon: ShieldCheck,
-                  title: "Flexible Cleaning Options",
-                  text: "Discuss the services and additional tasks that fit your property.",
-                },
-              ].map(({ icon: Icon, title, text }) => (
-                <div
-                  key={title}
-                  className="rounded-2xl border border-border/70 bg-background p-7 text-center"
-                >
-                  <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-[#102441] text-[#B8D2C5]">
-                    <Icon className="h-6 w-6" />
-                  </span>
-                  <h3 className="mt-5 text-xl font-medium text-navy">
-                    {title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                    {text}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <span
+              aria-hidden="true"
+              className={`grid h-10 w-10 place-items-center rounded-full border text-xl transition-all duration-300 group-hover:translate-x-1 ${
+                index === 0
+                  ? "border-[#102441]/25 bg-blue-50 text-[#102441] group-hover:bg-[#102441] group-hover:text-white"
+                  : "border-white/50 bg-white/10 text-white group-hover:bg-white group-hover:text-[#102441]"
+              }`}
+            >
+              ↗
+            </span>
           </div>
-        </section>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
 
         {/* SECTION: CUSTOMER REVIEWS */}
         <section

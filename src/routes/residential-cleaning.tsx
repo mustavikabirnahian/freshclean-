@@ -14,6 +14,13 @@ import {
   Truck,
   Star,
   StarHalf,
+  Microwave,
+Refrigerator,
+PanelsTopLeft,
+PanelTop,
+WashingMachine,
+Ruler,
+Calculator,
 } from "lucide-react";
 
 import { Header } from "@/components/site/Header";
@@ -426,327 +433,619 @@ function ResidentialCleaningPage() {
           </div>
         </section>
 
-        {/* SECTION: RESIDENTIAL SERVICE CARDS */}
-        <section className="bg-surface py-20 md:py-28">
-          <div className="container-site">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="eyebrow">Our Residential Services</p>
-              <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
-                The Right Clean for Every Home
-              </h2>
-              <p className="mt-4 text-base text-muted-foreground sm:text-lg">
-                From everyday home care to detailed deep cleaning, discover
-                the right cleaning service for your space.
+
+{/* SECTION: RESIDENTIAL SERVICE CARDS */}
+<section className="bg-surface py-20 md:py-28">
+  <div className="container-site">
+    <div className="mx-auto max-w-2xl text-center">
+      <p className="eyebrow">Our Residential Services</p>
+      <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
+        The Right Clean for Every Home
+      </h2>
+      <p className="mt-4 text-base text-muted-foreground sm:text-lg">
+        From everyday home care to detailed deep cleaning, discover
+        the right cleaning service for your space.
+      </p>
+    </div>
+
+    <div className="mt-14 grid grid-cols-1 gap-x-7 gap-y-12 sm:grid-cols-2 xl:grid-cols-4">
+      {services.map((service) => (
+        <div
+          key={service.number}
+          className="service-shadow group relative transition-transform duration-300 hover:-translate-y-1.5"
+        >
+          <article className="relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-white/90 bg-[linear-gradient(rgba(6,118,73,0.20),rgba(6,118,73,0.20)),#FDFDFD] shadow-[0_12px_35px_rgba(16,36,65,0.10)] backdrop-blur-2xl transition-all duration-500 hover:border-emerald/40 hover:bg-white/90 hover:shadow-[0_20px_45px_rgba(16,36,65,0.15)]">
+
+            <div className="p-3 pb-0">
+              <div className="overflow-hidden rounded-[1.1rem] border border-white/80 shadow-sm">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-1 flex-col p-6 pb-8">
+              <span className="w-fit rounded-full border border-emerald/20 bg-[#067649] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-sm sm:text-xs">
+                Service {service.number}
+              </span>
+
+              <h3 className="mt-3 text-xl font-semibold text-[#102441]">
+                {service.title}
+              </h3>
+
+              <p className="mt-1 text-sm font-semibold text-[#067649]">
+                {service.subtitle}
               </p>
+
+              <p className="mt-3 text-[15px] leading-relaxed text-[#52677F]">
+                {service.description}
+              </p>
+
+              <div className="mt-6 border-t border-[#DCE5E8]/90 pt-5">
+                <h4 className="mb-4 text-sm font-extrabold text-[#102441]">
+                  What's included in our service
+                </h4>
+
+                <ul className="space-y-3">
+                  {service.tasks.map((task) => (
+                    <li
+                      key={task}
+                      className="flex items-start gap-2.5 text-sm font-medium leading-relaxed text-[#52677F]"
+                    >
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#067649]" />
+                      <span>{task}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
-            <div className="mt-14 grid grid-cols-1 gap-x-7 gap-y-12 sm:grid-cols-2 xl:grid-cols-4">
-              {services.map((service) => (
-                <div
-                  key={service.number}
-                  className="service-shadow group relative transition-transform duration-300 hover:-translate-y-1.5"
+            <span
+              aria-hidden
+              className="absolute bottom-0 right-0 h-16 w-16 bg-surface [clip-path:polygon(100%_0,100%_100%,0_100%)]"
+            />
+          </article>
+
+          <span className="absolute bottom-0 right-0 grid h-14 w-14 translate-x-[30%] translate-y-[30%] place-items-center rounded-full bg-navy text-emerald-soft shadow-lift ring-4 ring-surface transition-transform duration-300 group-hover:scale-110">
+            {service.number === "01" ? (
+              <Home className="h-6 w-6" strokeWidth={1.6} />
+            ) : service.number === "02" ? (
+              <Sparkles className="h-6 w-6" strokeWidth={1.6} />
+            ) : service.number === "03" ? (
+              <Truck className="h-6 w-6" strokeWidth={1.6} />
+            ) : (
+              <CalendarDays className="h-6 w-6" strokeWidth={1.6} />
+            )}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+        
+{/* SECTION: ROOM-BY-ROOM CHECKLIST */}
+<section className="relative overflow-hidden bg-surface py-16 md:py-24">
+  <div className="container-site">
+    {/* Section heading */}
+    <div className="mx-auto max-w-2xl text-center">
+      <p className="eyebrow">Room by Room</p>
+
+      <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
+        What Gets Cleaned in Your Home?
+      </h2>
+
+      <p className="mt-4 leading-7 text-muted-foreground">
+        Here's a closer look at the everyday tasks that can be part
+        of your residential cleaning checklist.
+      </p>
+    </div>
+
+    {/* Room cards */}
+    <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
+      {roomChecklist.map((room) => (
+        <article
+          key={room.title}
+          className="group relative min-h-[330px] overflow-hidden rounded-[1.8rem] border-[3px] border-white/90 bg-[#075B3D] shadow-[0_14px_35px_rgba(16,36,65,0.14)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_22px_45px_rgba(16,36,65,0.20)]"
+          style={{
+            backgroundImage: `linear-gradient(90deg, rgba(0,65,43,0.96) 0%, rgba(0,77,49,0.88) 43%, rgba(0,77,49,0.48) 72%, rgba(0,77,49,0.12) 100%), url("${room.image}")`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          {/* Glass overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-300/10 via-transparent to-white/5 backdrop-blur-[1px]" />
+
+          {/* Card content */}
+          <div className="relative z-10 flex min-h-[330px] max-w-[75%] flex-col p-6 sm:p-7">
+            <h3 className="text-2xl font-bold text-white sm:text-3xl">
+              {room.title}
+            </h3>
+
+            <ul className="mt-5 space-y-3">
+              {room.tasks.map((task) => (
+                <li
+                  key={task}
+                  className="flex items-start gap-3 text-sm font-medium leading-5 text-white sm:text-base"
                 >
-                  <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-navy/10 bg-card shadow-[inset_0_1px_0_oklch(1_0_0/0.65)] transition-colors duration-300 hover:bg-card/80">
-                    <div className="p-3 pb-0">
-                      <div className="overflow-hidden rounded-xl">
-                        <img
-                          src={service.image}
-                          alt={service.title}
-                          className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex flex-1 flex-col p-6 pb-8">
-                      <span className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald">
-                        Service {service.number}
-                      </span>
-
-                      <h3 className="mt-2 text-xl font-medium text-navy">
-                        {service.title}
-                      </h3>
-
-                      <p className="mt-1 text-sm font-semibold text-emerald">
-                        {service.subtitle}
-                      </p>
-
-                      <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-                        {service.description}
-                      </p>
-
-                      <div className="mt-6 border-t border-navy/10 pt-5">
-                        <h4 className="mb-4 text-sm font-semibold text-navy">
-                          What's included
-                        </h4>
-
-                        <ul className="space-y-3">
-                          {service.tasks.map((task) => (
-                            <li
-                              key={task}
-                              className="flex items-start gap-2.5 text-sm font-medium leading-relaxed text-muted-foreground"
-                            >
-                              <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald" />
-                              <span>{task}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    <span
-                      aria-hidden
-                      className="absolute bottom-0 right-0 h-16 w-16 bg-surface [clip-path:polygon(100%_0,100%_100%,0_100%)]"
-                    />
-                  </article>
-
-                  <span className="absolute bottom-0 right-0 grid h-14 w-14 translate-x-[30%] translate-y-[30%] place-items-center rounded-full bg-navy text-emerald-soft shadow-lift ring-4 ring-surface transition-transform duration-300 group-hover:scale-110">
-                    {service.number === "01" ? (
-                      <Home className="h-6 w-6" strokeWidth={1.6} />
-                    ) : service.number === "02" ? (
-                      <Sparkles className="h-6 w-6" strokeWidth={1.6} />
-                    ) : service.number === "03" ? (
-                      <Truck className="h-6 w-6" strokeWidth={1.6} />
-                    ) : (
-                      <CalendarDays className="h-6 w-6" strokeWidth={1.6} />
-                    )}
-                  </span>
-                </div>
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-emerald-300" />
+                  <span>{task}</span>
+                </li>
               ))}
-            </div>
+            </ul>
+
+            <a
+              href="#quote"
+              className="mt-6 inline-flex w-fit items-center justify-center rounded-full border border-white/90 bg-white px-6 py-3 text-sm font-semibold text-[#064B34] shadow-lg transition-all duration-300 hover:scale-105 hover:bg-emerald-50"
+            >
+              Check Availability
+            </a>
           </div>
-        </section>
 
-        {/* SECTION: ROOM-BY-ROOM CHECKLIST */}
-        <section className="py-16 md:py-24">
-          <div className="container-site">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="eyebrow">Room by Room</p>
-              <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
-                What Gets Cleaned in Your Home?
-              </h2>
-              <p className="mt-4 leading-7 text-muted-foreground">
-                Here's a closer look at the everyday tasks that can be part
-                of your residential cleaning checklist.
-              </p>
-            </div>
+          {/* Glass border highlight */}
+          <div className="pointer-events-none absolute inset-0 rounded-[1.6rem] ring-1 ring-inset ring-white/20" />
+        </article>
+      ))}
+    </div>
 
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {roomChecklist.map((room) => (
-                <article
-                  key={room.title}
-                  className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-soft"
-                >
-                  <img
-                    src={room.image}
-                    alt={`${room.title} cleaning`}
-                    className="h-48 w-full object-cover"
-                  />
-                  <div className="p-5">
-                    <h3 className="text-xl font-semibold text-emerald">
-                      {room.title}
-                    </h3>
-                    <ul className="mt-4 space-y-3">
-                      {room.tasks.map((task) => (
-                        <li
-                          key={task}
-                          className="flex items-start gap-2 text-sm font-medium leading-5 text-foreground"
-                        >
-                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald" />
-                          {task}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              ))}
-            </div>
+    {/* Footer note */}
+    <p className="mt-7 text-center text-xs leading-6 text-muted-foreground">
+      Final tasks depend on the selected service, property condition
+      and agreed cleaning checklist.
+    </p>
+  </div>
+</section>
 
-            <p className="mt-7 text-center text-xs leading-6 text-muted-foreground">
-              Final tasks depend on the selected service, property condition
-              and agreed cleaning checklist.
+        
+{/* SECTION: ADD-ONS */}
+<section className="relative isolate overflow-hidden bg-[#F8F6F0] py-20 md:py-28">
+  {/* Decorative house watermark */}
+  <div
+    aria-hidden="true"
+    className="pointer-events-none absolute -left-8 top-0 -z-10 h-[420px] w-[650px] max-w-[65%] text-emerald/10"
+  >
+    <svg
+      viewBox="0 0 600 420"
+      fill="none"
+      className="h-full w-full"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M55 210L290 25L525 210"
+        stroke="currentColor"
+        strokeWidth="28"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M115 165V370H465V165"
+        stroke="currentColor"
+        strokeWidth="22"
+        strokeLinejoin="round"
+      />
+      <rect x="260" y="215" width="30" height="30" rx="5" fill="currentColor" />
+      <rect x="300" y="215" width="30" height="30" rx="5" fill="currentColor" />
+      <rect x="260" y="255" width="30" height="30" rx="5" fill="currentColor" />
+      <rect x="300" y="255" width="30" height="30" rx="5" fill="currentColor" />
+    </svg>
+  </div>
+
+  {/* Decorative sparkles */}
+  <div className="pointer-events-none absolute left-[45%] top-12 -z-10 text-emerald/10">
+    <Sparkles className="h-14 w-14" />
+  </div>
+  <div className="pointer-events-none absolute left-[49%] top-28 -z-10 text-emerald/10">
+    <Sparkles className="h-9 w-9" />
+  </div>
+
+  <div className="container-site relative z-10 grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+    {/* Left content */}
+    <div>
+      <p className="flex items-center gap-3 text-sm font-bold tracking-wide text-emerald">
+        <span className="h-[2px] w-12 rounded-full bg-emerald" />
+        Extra Attention
+      </p>
+
+      <h2 className="mt-5 text-4xl font-semibold tracking-tight text-navy sm:text-5xl md:text-6xl md:leading-[1.1]">
+        Want a Little More?
+      </h2>
+
+      <p className="mt-6 max-w-lg text-base leading-8 text-navy/80 sm:text-lg">
+        Add extra cleaning tasks to your plan when your home needs
+        more attention. These options can be discussed while preparing
+        your quote.
+      </p>
+
+      <a
+        href="#quote"
+        className="group mt-8 inline-flex items-center gap-4 rounded-full bg-gradient-to-r from-[#00875B] to-[#16B981] px-8 py-4 text-base font-bold text-white shadow-[0_12px_28px_rgba(5,150,105,0.22)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_35px_rgba(5,150,105,0.30)]"
+      >
+        Customize My Cleaning
+        <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+      </a>
+    </div>
+
+    {/* Right glass cards */}
+    <div className="grid gap-4 sm:grid-cols-2">
+      {addOns.map((item, index) => (
+        <div
+          key={item}
+          className="group relative flex min-h-[88px] items-center gap-4 overflow-hidden rounded-[1.5rem] border border-emerald-700/10 bg-white/55 px-4 py-4 shadow-[0_8px_25px_rgba(16,36,65,0.045)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-emerald/30 hover:bg-white/80 hover:shadow-[0_14px_30px_rgba(5,150,105,0.10)] sm:px-5"
+        >
+          {/* Soft glass highlight */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-emerald-100/20" />
+
+          {/* Green icon circle */}
+          <span className="relative grid h-14 w-14 shrink-0 place-items-center rounded-full border border-emerald-100 bg-gradient-to-br from-emerald-50 to-emerald-100/80 text-emerald shadow-[0_4px_14px_rgba(5,150,105,0.08)] transition-transform duration-300 group-hover:scale-110">
+            {index === 0 ? (
+  <Microwave className="h-6 w-6" />
+) : index === 1 ? (
+  <Refrigerator className="h-6 w-6" />
+) : index === 2 ? (
+  <PanelsTopLeft className="h-6 w-6" />
+) : index === 3 ? (
+  <PanelTop className="h-6 w-6" />
+) : index === 4 ? (
+  <WashingMachine className="h-6 w-6" />
+) : (
+  <Ruler className="h-6 w-6" />
+)}
+          </span>
+
+          {/* Add-on title */}
+          <span className="relative flex-1 text-sm font-bold leading-5 text-navy sm:text-[15px]">
+            {item}
+          </span>
+
+          {/* Arrow circle */}
+          <span
+            aria-hidden="true"
+            className="relative grid h-10 w-10 shrink-0 place-items-center rounded-full border border-emerald-100 bg-emerald-50/80 text-emerald transition-all duration-300 group-hover:border-emerald group-hover:bg-emerald group-hover:text-white"
+          >
+            <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5" />
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+        
+{/* SECTION: CLEANING FREQUENCY */}
+<section className="relative overflow-hidden bg-[#F8F6F0] py-16 md:py-24">
+  {/* Soft background glow */}
+  <div className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-emerald/15 blur-[100px]" />
+  <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-green-300/20 blur-[110px]" />
+
+  <div className="container-site relative z-10">
+    {/* Section heading */}
+    <div className="mx-auto max-w-2xl text-center">
+      <p className="eyebrow">Your Schedule</p>
+
+      <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
+        How Often Would You Like Us to Clean?
+      </h2>
+
+      <p className="mt-4 leading-7 text-muted-foreground">
+        Choose a cleaning frequency that works for your household.
+      </p>
+    </div>
+
+    {/* Frequency glass cards */}
+    <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {frequencies.map((frequency, index) => (
+        <article
+          key={frequency.title}
+          className={`group relative flex min-h-[300px] flex-col overflow-hidden rounded-[1.8rem] border p-7 backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 ${
+            index === 1
+              ? "border-emerald-300/70 bg-gradient-to-br from-[#13A875]/90 via-[#07966B]/95 to-[#04734F]/95 text-white shadow-[0_20px_45px_rgba(4,115,79,0.25)] hover:shadow-[0_25px_50px_rgba(4,115,79,0.32)]"
+              : "border-white/80 bg-white/45 text-navy shadow-[0_12px_35px_rgba(16,36,65,0.08)] hover:border-emerald-300/80 hover:bg-white/60 hover:shadow-[0_20px_40px_rgba(16,36,65,0.12)]"
+          }`}
+        >
+          {/* Glass highlight */}
+          <div className="pointer-events-none absolute inset-0 rounded-[1.7rem] bg-gradient-to-br from-white/35 via-transparent to-emerald-100/10" />
+
+          {/* Icon */}
+          <div
+            className={`relative grid h-14 w-14 place-items-center rounded-full border shadow-sm transition-transform duration-500 group-hover:scale-110 ${
+              index === 1
+                ? "border-white/80 bg-white text-[#07966B]"
+                : "border-white/90 bg-white/65 text-emerald"
+            }`}
+          >
+            {index === 0 ? (
+              <Clock3 className="h-6 w-6" />
+            ) : index === 1 ? (
+              <CalendarDays className="h-6 w-6" />
+            ) : index === 2 ? (
+              <Home className="h-6 w-6" />
+            ) : (
+              <Sparkles className="h-6 w-6" />
+            )}
+          </div>
+
+          {/* Card content */}
+          <div className="relative mt-8">
+            <h3
+              className={`text-xl font-bold tracking-tight ${
+                index === 1 ? "text-white" : "text-[#102441]"
+              }`}
+            >
+              {frequency.title}
+            </h3>
+
+            <p
+              className={`mt-3 text-sm font-bold leading-6 ${
+                index === 1 ? "text-white/90" : "text-[#52677F]"
+              }`}
+            >
+              {frequency.text}
             </p>
           </div>
-        </section>
 
-        {/* SECTION: ADD-ONS */}
-        <section className="bg-navy py-16 text-navy-foreground md:py-20">
-          <div className="container-site grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <p className="eyebrow">Extra Attention</p>
-              <h2 className="mt-3 text-3xl font-medium sm:text-4xl">
-                Want a Little More?
-              </h2>
-              <p className="mt-5 max-w-lg leading-7 text-navy-foreground/75">
-                Add extra cleaning tasks to your plan when your home needs
-                more attention. These options can be discussed while preparing
-                your quote.
-              </p>
-              <a
-                href="#quote"
-                className="mt-7 inline-flex items-center gap-2 rounded-full bg-emerald px-6 py-3 font-semibold text-primary-foreground transition hover:bg-emerald-dark"
-              >
-                Customize My Cleaning
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
+          {/* Bottom label and arrow */}
+          <div className="relative mt-auto flex items-center justify-between gap-3 pt-8">
+            <span
+              className={`text-[11px] font-bold uppercase tracking-[0.16em] ${
+                index === 1 ? "text-white/75" : "text-emerald/75"
+              }`}
+            >
+              0{index + 1} / {frequency.title}
+            </span>
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              {addOns.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-3 rounded-xl border border-navy-foreground/15 bg-navy-foreground/5 p-4"
-                >
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-emerald/15 text-emerald-bright">
-                    <Sparkles className="h-4 w-4" />
-                  </span>
-                  <span className="text-sm font-medium">{item}</span>
-                </div>
-              ))}
-            </div>
+            <span
+              aria-hidden="true"
+              className={`grid h-11 w-11 shrink-0 place-items-center rounded-full border transition-all duration-300 group-hover:translate-x-1 ${
+                index === 1
+                  ? "border-white/40 bg-white/10 text-white group-hover:bg-white group-hover:text-emerald"
+                  : "border-emerald/20 bg-white/50 text-emerald group-hover:border-emerald group-hover:bg-emerald group-hover:text-white"
+              }`}
+            >
+              <span className="text-xl leading-none">↗</span>
+            </span>
           </div>
-        </section>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
 
-        {/* SECTION: CLEANING FREQUENCY */}
-        <section className="bg-white py-16 md:py-20">
-          <div className="container-site">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="eyebrow">Your Schedule</p>
-              <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
-                How Often Would You Like Us to Clean?
-              </h2>
-              <p className="mt-4 leading-7 text-muted-foreground">
-                Choose a cleaning frequency that works for your household.
-              </p>
-            </div>
 
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {frequencies.map((frequency, index) => (
-                <div
-                  key={frequency.title}
-                  className="rounded-2xl border border-border bg-background p-6 text-center transition hover:border-emerald/50 hover:shadow-soft"
-                >
-                  <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-emerald-soft text-emerald">
-                    {index === 0 ? (
-                      <Clock3 className="h-5 w-5" />
-                    ) : index === 1 ? (
-                      <CalendarDays className="h-5 w-5" />
-                    ) : index === 2 ? (
-                      <Home className="h-5 w-5" />
-                    ) : (
-                      <Sparkles className="h-5 w-5" />
-                    )}
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold text-navy">
-                    {frequency.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    {frequency.text}
-                  </p>
+{/* SECTION: HOW IT WORKS */}
+<section id="how-it-works" className="relative overflow-hidden py-16 md:py-24">
+  {/* Soft decorative green shapes */}
+  <div className="pointer-events-none absolute -left-28 top-0 h-64 w-64 rounded-full bg-emerald-100/50 blur-3xl" />
+  <div className="pointer-events-none absolute -right-28 bottom-0 h-72 w-72 rounded-full bg-green-100/50 blur-3xl" />
+
+  <div className="container-site relative z-10">
+    {/* Section heading */}
+    <div className="mx-auto max-w-3xl text-center">
+      <p className="flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.22em] text-emerald-700">
+        <span className="h-px w-12 bg-emerald-600" />
+        Simple Process
+        <span className="h-px w-12 bg-emerald-600" />
+      </p>
+
+      <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight text-navy sm:text-5xl md:text-6xl">
+        Getting Started Is Easy
+      </h2>
+
+      <p className="mt-5 text-base leading-7 text-[#52677F] sm:text-lg">
+        Follow these simple steps to book your residential cleaning service.
+      </p>
+    </div>
+
+    {/* Cards and connecting path */}
+    <div className="relative mt-16">
+      {/* Dashed connecting line */}
+      <svg
+        aria-hidden="true"
+        className="pointer-events-none absolute left-[8%] top-1/2 hidden h-24 w-[84%] -translate-y-1/2 md:block"
+        viewBox="0 0 1000 100"
+        fill="none"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0 25 C100 25 100 75 200 75 S300 25 400 25 S500 75 600 75 S700 25 800 25 S900 75 1000 75"
+          stroke="#69B99A"
+          strokeWidth="3"
+          strokeDasharray="10 12"
+          strokeLinecap="round"
+        />
+      </svg>
+
+      <div className="relative grid grid-cols-1 justify-items-center gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+        {[
+          {
+            number: "01",
+            title: "Tell Us About Your Home",
+            text: "Share your property details and the cleaning help you need.",
+            icon: Home,
+            rotate: "lg:-rotate-3",
+          },
+          {
+            number: "02",
+            title: "Receive Your Estimate",
+            text: "Get a personalized estimate based on your requirements.",
+            icon: Calculator,
+            rotate: "lg:rotate-2 lg:translate-y-8",
+          },
+          {
+            number: "03",
+            title: "Choose a Schedule",
+            text: "Discuss an available date and a convenient time.",
+            icon: CalendarDays,
+            rotate: "lg:-rotate-2",
+          },
+          {
+            number: "04",
+            title: "Enjoy Your Fresh Space",
+            text: "Your agreed cleaning checklist guides the visit.",
+            icon: Sparkles,
+            rotate: "lg:rotate-3 lg:translate-y-8",
+          },
+        ].map((step) => {
+          const Icon = step.icon;
+
+          return (
+            <article
+              key={step.number}
+              className={`group relative mx-auto w-full max-w-[191px] transition-all duration-500 hover:-translate-y-2 hover:rotate-0 ${step.rotate}`}
+            >
+              {/* Pin */}
+              <div className="absolute -top-5 left-1/2 z-20 -translate-x-1/2">
+                <div className="relative h-9 w-9">
+                  <span className="absolute left-1/2 top-4 h-5 w-5 -translate-x-1/2 rounded-full bg-[#075B3D] shadow-md" />
+                  <span className="absolute left-1/2 top-0 h-8 w-8 -translate-x-1/2 rounded-full border border-emerald-300/60 bg-gradient-to-br from-[#38A879] via-[#087B50] to-[#064B34] shadow-[0_5px_10px_rgba(4,90,58,0.35)]" />
+                  <span className="absolute left-[9px] top-[5px] h-2 w-2 rounded-full bg-white/60" />
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
+              </div>
 
-        {/* SECTION: HOW IT WORKS */}
-       <section id="how-it-works" className="py-16 md:py-20">
-          <div className="container-site">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="eyebrow">Simple Process</p>
-              <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
-                Getting Started Is Easy
-              </h2>
-            </div>
+              {/* Main card */}
+              <div className="relative min-h-[285px] overflow-hidden rounded-[1.5rem] border-[5px] border-white bg-gradient-to-br from-[#F1FBF5] via-[#E7F7ED] to-[#D4F0DF] p-5 pt-10 shadow-[0_16px_35px_rgba(16,36,65,0.13)] transition-all duration-500 group-hover:shadow-[0_22px_42px_rgba(4,115,79,0.20)]">
+                {/* Inner border */}
+                <div className="pointer-events-none absolute inset-1 rounded-[1.1rem] border border-emerald-200/80" />
 
-            <div className="mt-12 grid gap-8 md:grid-cols-4">
-              {[
-                {
-                  number: "01",
-                  title: "Tell Us About Your Home",
-                  text: "Share your property details and the cleaning help you need.",
-                },
-                {
-                  number: "02",
-                  title: "Receive Your Estimate",
-                  text: "Get a personalized estimate based on your requirements.",
-                },
-                {
-                  number: "03",
-                  title: "Choose a Schedule",
-                  text: "Discuss an available date and a convenient time.",
-                },
-                {
-                  number: "04",
-                  title: "Enjoy Your Fresh Space",
-                  text: "Your agreed cleaning checklist guides the visit.",
-                },
-              ].map((step) => (
-                <div key={step.number} className="relative text-center">
-                  <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-emerald-soft font-display text-xl font-semibold text-emerald">
+                {/* Number and icon */}
+                <div className="relative flex items-center justify-between gap-2">
+                  <span className="font-display text-4xl font-bold tracking-tight text-[#17865A]">
                     {step.number}
                   </span>
-                  <h3 className="mt-5 text-xl font-medium text-navy">
-                    {step.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                    {step.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* SECTION: WHY FRESHSPACE */}
-        <section className="bg-white py-16 md:py-20">
-          <div className="container-site">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="eyebrow">The FreshSpace Approach</p>
-              <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
-                Thoughtful Cleaning, Made Simple
-              </h2>
-              <p className="mt-4 leading-7 text-muted-foreground">
-                A good cleaning experience starts with understanding what
-                matters most in your home.
-              </p>
-            </div>
-
-            <div className="mt-10 grid gap-5 md:grid-cols-3">
-              {[
-                {
-                  icon: Home,
-                  title: "Made for Your Home",
-                  text: "Cleaning tasks can be discussed and tailored to your space and priorities.",
-                },
-                {
-                  icon: CalendarDays,
-                  title: "Flexible Scheduling",
-                  text: "Explore recurring or one-time cleaning options around your routine.",
-                },
-                {
-                  icon: ShieldCheck,
-                  title: "Clear Expectations",
-                  text: "Know which tasks are included in your agreed cleaning checklist.",
-                },
-              ].map(({ icon: Icon, title, text }) => (
-                <div
-                  key={title}
-                  className="rounded-2xl border border-border/70 bg-background p-7 text-center"
-                >
-                  <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-emerald-soft text-emerald">
-                    <Icon className="h-6 w-6" />
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-emerald-100 bg-white/90 text-[#075B3D] shadow-[0_4px_12px_rgba(4,115,79,0.10)] transition-transform duration-300 group-hover:scale-110">
+                    <Icon className="h-5 w-5" strokeWidth={1.8} />
                   </span>
-                  <h3 className="mt-5 text-xl font-medium text-navy">
-                    {title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                    {text}
-                  </p>
                 </div>
-              ))}
-            </div>
+
+                {/* Card content */}
+                <h3 className="relative mt-5 text-lg font-bold leading-6 text-[#073F2D]">
+                  {step.title}
+                </h3>
+
+                <p className="relative mt-4 text-sm leading-6 text-[#426B59]">
+                  {step.text}
+                </p>
+
+                {/* Bottom detail */}
+                <div className="relative mt-7 h-[3px] w-10 rounded-full bg-[#168657] transition-all duration-300 group-hover:w-16" />
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{/* SECTION: WHY FRESHSPACE */}
+<section className="relative overflow-hidden bg-[#F8F6F0] py-16 md:py-24">
+  {/* Soft green background glow */}
+  <div className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-emerald/15 blur-[110px]" />
+  <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-green-300/20 blur-[120px]" />
+
+  <div className="container-site relative z-10">
+    {/* Section heading */}
+    <div className="mx-auto max-w-2xl text-center">
+      <p className="eyebrow">The FreshSpace Approach</p>
+
+      <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
+        Thoughtful Cleaning, Made Simple
+      </h2>
+
+      <p className="mt-4 leading-7 text-muted-foreground">
+        A good cleaning experience starts with understanding what
+        matters most in your home.
+      </p>
+    </div>
+
+    {/* Glass cards */}
+    <div className="mt-12 grid gap-6 md:grid-cols-3">
+      {[
+        {
+          icon: Home,
+          title: "Made for Your Home",
+          text: "Cleaning tasks can be discussed and tailored to your space and priorities.",
+        },
+        {
+          icon: CalendarDays,
+          title: "Flexible Scheduling",
+          text: "Explore recurring or one-time cleaning options around your routine.",
+        },
+        {
+          icon: ShieldCheck,
+          title: "Clear Expectations",
+          text: "Know which tasks are included in your agreed cleaning checklist.",
+        },
+      ].map(({ icon: Icon, title, text }, index) => (
+        <article
+          key={title}
+          className={`group relative flex min-h-[290px] flex-col overflow-hidden rounded-[1.8rem] border p-7 backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 ${
+            index === 1
+              ? "border-emerald-300/70 bg-gradient-to-br from-[#13A875]/90 via-[#07966B]/95 to-[#04734F]/95 text-white shadow-[0_20px_45px_rgba(4,115,79,0.22)] hover:shadow-[0_25px_50px_rgba(4,115,79,0.30)]"
+              : "border-white/90 bg-white/45 text-navy shadow-[0_14px_35px_rgba(16,36,65,0.09)] hover:border-emerald-300/80 hover:bg-white/65 hover:shadow-[0_22px_45px_rgba(16,36,65,0.13)]"
+          }`}
+        >
+          {/* Glass highlight */}
+          <div className="pointer-events-none absolute inset-0 rounded-[1.7rem] bg-gradient-to-br from-white/40 via-transparent to-emerald-100/10" />
+
+          {/* Icon */}
+          <div
+            className={`relative grid h-14 w-14 place-items-center rounded-full border shadow-sm transition-transform duration-500 group-hover:scale-110 ${
+              index === 1
+                ? "border-white/80 bg-white text-[#07966B]"
+                : "border-white/90 bg-emerald-100/70 text-emerald"
+            }`}
+          >
+            <Icon className="h-6 w-6" />
           </div>
-        </section>
+
+          {/* Content */}
+          <div className="relative mt-8">
+            <h3
+              className={`text-xl font-bold tracking-tight ${
+                index === 1 ? "text-white" : "text-[#102441]"
+              }`}
+            >
+              {title}
+            </h3>
+
+            <p
+              className={`mt-3 text-sm font-semibold leading-7 ${
+                index === 1 ? "text-white/90" : "text-[#52677F]"
+              }`}
+            >
+              {text}
+            </p>
+          </div>
+
+          {/* Bottom decorative detail */}
+          <div className="relative mt-auto flex items-center justify-between pt-7">
+            <span
+              className={`h-[3px] w-12 rounded-full ${
+                index === 1 ? "bg-white/90" : "bg-emerald/70"
+              }`}
+            />
+
+            <span
+              aria-hidden="true"
+              className={`grid h-10 w-10 place-items-center rounded-full border text-xl transition-all duration-300 group-hover:translate-x-1 ${
+                index === 1
+                  ? "border-white/50 bg-white/10 text-white group-hover:bg-white group-hover:text-emerald"
+                  : "border-emerald/25 bg-white/50 text-emerald group-hover:bg-emerald group-hover:text-white"
+              }`}
+            >
+              ↗
+            </span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
 
         {/* SECTION: CUSTOMER REVIEWS */}
         <section

@@ -1,3 +1,4 @@
+
 import { useState, type FormEvent } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import {
@@ -8,7 +9,7 @@ import { business } from "@/content/site";
 import { ZIP_PATTERN } from "@/lib/service-area";
 import { lookupZip, type ZipLookupResult } from "@/lib/zip-lookup.functions";
 // Hero photo — swap this import to change the image.
-import heroImage from "@/assets/hero-bright.jpg";
+import heroImage from "@/assets/freshspace-hero3.png";
 
 /* Full-bleed bright hero: realistic photo (no dark overlay), headline left,
    location-finder card with a working ZIP checker on the right. */
@@ -26,18 +27,23 @@ export function Hero() {
       />
 
       <div className="container-site grid items-center gap-10 py-14 md:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:py-24">
-        <div className="hero-in">
-          <p className="inline-flex items-center gap-1.5 rounded-full bg-blue-soft/90 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-blue sm:text-xs">
+        <div className="hero-in rounded-3xl bg-white/75 p-5 backdrop-blur-sm sm:bg-white/65 sm:p-7">
+          <p className="inline-flex items-center gap-1.5 rounded-full border border-[#B9DCC6] bg-[#EAF4ED]/95 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#087A4B] sm:text-xs">
             <MapPin className="h-3.5 w-3.5" aria-hidden />
             Professional Home Cleaning in Austin, TX
           </p>
+
           <h1 className="mt-5 max-w-xl text-[2.7rem] font-medium leading-[1.04] text-navy drop-shadow-[0_1px_0_rgba(255,255,255,0.35)] sm:text-6xl lg:text-[4.25rem]">
             A Cleaner Space.<br />
-            <span className="text-blue">A Healthier You.</span>
+            <span className="hero-text-reveal text-[#087A4B]">
+              A Healthier You.
+            </span>
           </h1>
-          <p className="mt-6 max-w-lg text-lg leading-relaxed text-navy/85">
+
+          <p className="mt-6 max-w-lg text-lg leading-relaxed text-[#46545B]">
             Reliable home cleaning that fits your schedule. Tell us where you need help, and we&rsquo;ll help you take the next step.
           </p>
+
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a href="#quote" className="group inline-flex items-center justify-center gap-2 rounded-full bg-emerald px-7 py-4 font-semibold text-primary-foreground shadow-lift transition hover:-translate-y-px hover:bg-emerald-dark hover:shadow-float focus-visible:outline-2">
               Get a Free Quote <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
@@ -56,7 +62,7 @@ export function Hero() {
             </p>
             <p className="font-medium text-navy/75">Trusted by local homeowners</p>
             <p className="flex items-start gap-1.5">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-blue" aria-hidden />
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#087A4B]" aria-hidden />
               <span>Serving {business.heroAreas.join(" • ")}</span>
             </p>
           </div>
@@ -132,19 +138,19 @@ function LocationFinderCard() {
   };
 
   return (
-    <div className="hero-img relative">
-      <div className="rounded-[1.375rem] bg-card p-6 shadow-float sm:p-8">
-        <div className="flex items-start gap-4">
-          <span className="pin-in pin-hover grid h-12 w-12 shrink-0 place-items-center rounded-full bg-blue-soft text-blue">
-            <MapPin className="h-6 w-6" strokeWidth={1.8} aria-hidden />
+    <div className="hero-img relative w-full max-w-[300px] justify-self-center lg:justify-self-end">
+      <div className="rounded-[1.375rem] bg-white/95 px-4 py-2.5 shadow-float backdrop-blur-md sm:px-4 sm:py-2.5">
+        <div className="flex items-start gap-3">
+          <span className="pin-in pin-hover grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#EAF4ED] text-[#087A4B]">
+            <MapPin className="h-4 w-4" strokeWidth={1.8} aria-hidden />
           </span>
           <div>
-            <h2 className="text-[1.55rem] font-medium leading-snug text-navy">Find Cleaning Services Near You</h2>
-            <p className="mt-1.5 text-[15px] text-muted-foreground">Enter your ZIP code to check whether we serve your area.</p>
+            <h2 className="text-base font-medium leading-tight text-navy">Find Cleaning Services Near You</h2>
+            <p className="mt-1.5 text-sm text-muted-foreground">Enter your ZIP code to check whether we serve your area.</p>
           </div>
         </div>
 
-        <form onSubmit={onSubmit} noValidate className="mt-6">
+        <form onSubmit={onSubmit} noValidate className="mt-2.5">
           <label htmlFor="hero-zip" className="text-sm font-semibold text-navy">ZIP Code</label>
           <input
             id="hero-zip"
@@ -160,7 +166,7 @@ function LocationFinderCard() {
             }}
             aria-invalid={state.kind === "invalid"}
             aria-describedby={state.kind !== "idle" ? "hero-zip-result" : undefined}
-            className="mt-2 block w-full rounded-lg border border-input bg-card px-4 py-3.5 text-[15px] text-foreground outline-none transition placeholder:text-muted-foreground/70 focus:border-blue focus:ring-4 focus:ring-blue/20 aria-[invalid=true]:border-destructive"
+            className="mt-2 block w-full rounded-lg border border-input bg-card px-3 py-2.5 text-sm text-foreground outline-none transition placeholder:text-muted-foreground/70 focus:border-[#087A4B] focus:ring-4 focus:ring-[#087A4B]/20 aria-[invalid=true]:border-destructive"
           />
           <div aria-live="polite">
             {state.kind === "invalid" && (
@@ -197,7 +203,7 @@ function LocationFinderCard() {
           <button
             type="submit"
             disabled={pending}
-            className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-emerald px-7 py-4 font-semibold text-primary-foreground shadow-lift transition hover:-translate-y-px hover:bg-emerald-dark hover:shadow-float focus-visible:outline-2 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+            className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-emerald px-5 py-2.5 font-semibold text-primary-foreground shadow-lift transition hover:-translate-y-px hover:bg-emerald-dark hover:shadow-float focus-visible:outline-2 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
           >
             {pending
               ? (<><LoaderCircle className="h-4 w-4 animate-spin" aria-hidden /> Checking…</>)
@@ -205,7 +211,7 @@ function LocationFinderCard() {
           </button>
         </form>
 
-        <div className="mt-6 flex items-center gap-3" aria-hidden>
+        <div className="mt-4 flex items-center gap-3" aria-hidden>
           <span className="h-px flex-1 bg-border" />
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">or</span>
           <span className="h-px flex-1 bg-border" />

@@ -1,3 +1,7 @@
+import officeWorkspace from "@/assets/office-workspace.jpg";
+import commercialKitchen from "@/assets/commercial-kitchen.jpg";
+import commercialRestroom from "@/assets/commercial-restroom.jpg";
+import conferenceRoom from "@/assets/conference-room.jpg";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -13,6 +17,17 @@ import {
   Truck,
   Star,
   StarHalf,
+    PanelsTopLeft,
+  Armchair,
+  Layers,
+  Wind,
+  Refrigerator,
+  DoorClosed,
+  
+  Calculator,
+  
+ 
+  
 } from "lucide-react";
 
 import { Header } from "@/components/site/Header";
@@ -141,11 +156,12 @@ const services = [
   },
 ];
 
+
 // WORKPLACE AREA CHECKLIST DATA
 const roomChecklist = [
   {
     title: "Workstations & Offices",
-    image: kitchenImage,
+    image: officeWorkspace,
     tasks: [
       "Desks and accessible surfaces",
       "Meeting tables and shared counters",
@@ -157,7 +173,7 @@ const roomChecklist = [
   },
   {
     title: "Restrooms",
-    image: bathroomImage,
+    image: commercialRestroom,
     tasks: [
       "Toilets and urinals",
       "Sinks, faucets and countertops",
@@ -169,7 +185,7 @@ const roomChecklist = [
   },
   {
     title: "Breakrooms & Kitchens",
-    image: residentialHero,
+    image: commercialKitchen,
     tasks: [
       "Counters and tables",
       "Sinks and faucets",
@@ -181,7 +197,7 @@ const roomChecklist = [
   },
   {
     title: "Reception & Common Areas",
-    image: deepCleaningImage,
+    image: conferenceRoom,
     tasks: [
       "Reception desks and furniture",
       "Lobbies and hallways",
@@ -193,14 +209,45 @@ const roomChecklist = [
   },
 ];
 
-// ADD-ON SERVICES DATA
+
+// COMMERCIAL CLEANING ADD-ONS DATA
 const addOns = [
-  "Interior glass and window cleaning",
-  "High-touch surface detailing",
-  "Extra floor and carpet care",
-  "Detailed appliance cleaning",
-  "Additional restroom servicing",
-  "Customized cleaning checklist",
+  {
+    title: "Interior Glass & Partitions",
+    description:
+      "Cleaning interior glass walls, office partitions, and glass doors for a clearer, more polished workspace.",
+    icon: PanelsTopLeft,
+  },
+  {
+    title: "Upholstery & Office Chairs",
+    description:
+      "Extra attention for fabric office chairs, reception seating, and waiting-area furniture.",
+    icon: Armchair,
+  },
+  {
+    title: "Carpet & Spot Treatment",
+    description:
+      "Targeted treatment for visible carpet stains and heavily used floor areas.",
+    icon: Layers,
+  },
+  {
+    title: "High Dusting & Vent Cleaning",
+    description:
+      "Removing accessible dust from vents, ceiling fixtures, and elevated surfaces.",
+    icon: Wind,
+  },
+  {
+    title: "Breakroom Appliance Cleaning",
+    description:
+      "Detailed exterior cleaning of microwaves, refrigerators, and other shared appliances.",
+    icon: Refrigerator,
+  },
+  {
+    title: "Detailed Doors & Baseboards",
+    description:
+      "Cleaning door frames, handles, baseboards, and other frequently overlooked details.",
+    icon: DoorClosed,
+  },
 ];
 
 // COMMERCIAL CLEANING SCHEDULE DATA
@@ -453,326 +500,621 @@ function CommercialOfficeCleaningPage() {
           </div>
         </section>
 
-        {/* SECTION: COMMERCIAL SERVICE CARDS */}
-        <section className="bg-surface py-20 md:py-28">
-          <div className="container-site">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="eyebrow">Our Commercial Services</p>
-              <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
-                The Right Clean for Your Workplace
-              </h2>
-              <p className="mt-4 text-base text-muted-foreground sm:text-lg">
-                From office and janitorial care to restrooms, breakrooms and shared spaces, discover
-                the right cleaning service for your workplace.
+
+{/* SECTION: COMMERCIAL SERVICE CARDS */}
+<section className="bg-[#F2F6F2] py-20 md:py-28">
+  <div className="container-site">
+    <div className="mx-auto max-w-2xl text-center">
+      <p className="eyebrow">Our Commercial Services</p>
+
+      <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
+        The Right Clean for Your Workplace
+      </h2>
+
+      <p className="mt-4 text-base text-muted-foreground sm:text-lg">
+        From office and janitorial care to restrooms, breakrooms and shared spaces, discover
+        the right cleaning service for your workplace.
+      </p>
+    </div>
+
+    <div className="mt-14 grid grid-cols-1 gap-x-7 gap-y-12 sm:grid-cols-2 xl:grid-cols-4">
+      {services.map((service) => (
+        <div
+          key={service.number}
+          className="service-shadow group relative transition-transform duration-300 hover:-translate-y-1.5"
+        >
+          <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-navy/10 bg-card shadow-[inset_0_1px_0_oklch(1_0_0/0.65)] transition-colors duration-300 hover:bg-card/80">
+            <div className="p-3 pb-0">
+              <div className="overflow-hidden rounded-xl">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-1 flex-col p-6 pb-8">
+              <span className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald">
+                Service {service.number}
+              </span>
+
+              <h3 className="mt-2 text-xl font-medium text-navy">
+                {service.title}
+              </h3>
+
+              <p className="mt-1 text-sm font-semibold text-emerald">
+                {service.subtitle}
               </p>
+
+              <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
+                {service.description}
+              </p>
+
+              <div className="mt-6 border-t border-navy/10 pt-5">
+                <h4 className="mb-4 text-sm font-semibold text-navy">
+                  What's included
+                </h4>
+
+                <ul className="space-y-3">
+                  {service.tasks.map((task) => (
+                    <li
+                      key={task}
+                      className="flex items-start gap-2.5 text-sm font-medium leading-relaxed text-muted-foreground"
+                    >
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald" />
+                      <span>{task}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
-            <div className="mt-14 grid grid-cols-1 gap-x-7 gap-y-12 sm:grid-cols-2 xl:grid-cols-4">
-              {services.map((service) => (
-                <div
-                  key={service.number}
-                  className="service-shadow group relative transition-transform duration-300 hover:-translate-y-1.5"
+            <span
+              aria-hidden
+              className="absolute bottom-0 right-0 h-16 w-16 bg-[#F2F6F2] [clip-path:polygon(100%_0,100%_100%,0_100%)]"
+            />
+          </article>
+
+          <span className="absolute bottom-0 right-0 grid h-14 w-14 translate-x-[30%] translate-y-[30%] place-items-center rounded-full bg-[#176B3A] text-white shadow-lift ring-4 ring-[#F2F6F2] transition-transform duration-300 group-hover:scale-110">
+            {service.number === "01" ? (
+              <Home className="h-6 w-6" strokeWidth={1.6} />
+            ) : service.number === "02" ? (
+              <Sparkles className="h-6 w-6" strokeWidth={1.6} />
+            ) : service.number === "03" ? (
+              <Truck className="h-6 w-6" strokeWidth={1.6} />
+            ) : (
+              <CalendarDays className="h-6 w-6" strokeWidth={1.6} />
+            )}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
+{/* SECTION: WORKPLACE AREA CHECKLIST */}
+<section className="relative overflow-hidden bg-[#F2F6F2] py-16 md:py-24">
+  <div className="container-site">
+    <div className="mx-auto max-w-2xl text-center">
+      <p className="eyebrow">Area by Area</p>
+
+      <h2 className="mt-3 text-3xl font-medium text-[#17452F] sm:text-4xl">
+        What Gets Cleaned at Your Workplace?
+      </h2>
+
+      <p className="mt-4 leading-7 text-[#52675B]">
+        Here's a closer look at the everyday tasks that can be part
+        of your commercial cleaning checklist.
+      </p>
+    </div>
+
+    <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
+      {roomChecklist.map((room) => (
+        <article
+          key={room.title}
+          className="group relative min-h-[330px] overflow-hidden rounded-[1.8rem] border-[3px] border-white/90 bg-[#DDEFE3] shadow-[0_14px_35px_rgba(20,65,42,0.12)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_22px_45px_rgba(20,65,42,0.20)]"
+          style={{
+            backgroundImage: `linear-gradient(90deg, rgba(221,239,227,0.97) 0%, rgba(221,239,227,0.89) 43%, rgba(221,239,227,0.50) 72%, rgba(221,239,227,0.12) 100%), url("${room.image}")`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-emerald-200/10 backdrop-blur-[1px]" />
+
+          <div className="relative z-10 flex min-h-[330px] max-w-[75%] flex-col p-6 sm:p-7">
+            <h3 className="text-2xl font-bold text-[#17452F] sm:text-3xl">
+              {room.title}
+            </h3>
+
+            <ul className="mt-5 space-y-3">
+              {room.tasks.map((task) => (
+                <li
+                  key={task}
+                  className="flex items-start gap-3 text-sm font-medium leading-5 text-[#294B38] sm:text-base"
                 >
-                  <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-navy/10 bg-card shadow-[inset_0_1px_0_oklch(1_0_0/0.65)] transition-colors duration-300 hover:bg-card/80">
-                    <div className="p-3 pb-0">
-                      <div className="overflow-hidden rounded-xl">
-                        <img
-                          src={service.image}
-                          alt={service.title}
-                          className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex flex-1 flex-col p-6 pb-8">
-                      <span className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald">
-                        Service {service.number}
-                      </span>
-
-                      <h3 className="mt-2 text-xl font-medium text-navy">
-                        {service.title}
-                      </h3>
-
-                      <p className="mt-1 text-sm font-semibold text-emerald">
-                        {service.subtitle}
-                      </p>
-
-                      <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-                        {service.description}
-                      </p>
-
-                      <div className="mt-6 border-t border-navy/10 pt-5">
-                        <h4 className="mb-4 text-sm font-semibold text-navy">
-                          What's included
-                        </h4>
-
-                        <ul className="space-y-3">
-                          {service.tasks.map((task) => (
-                            <li
-                              key={task}
-                              className="flex items-start gap-2.5 text-sm font-medium leading-relaxed text-muted-foreground"
-                            >
-                              <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald" />
-                              <span>{task}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    <span
-                      aria-hidden
-                      className="absolute bottom-0 right-0 h-16 w-16 bg-surface [clip-path:polygon(100%_0,100%_100%,0_100%)]"
-                    />
-                  </article>
-
-                  <span className="absolute bottom-0 right-0 grid h-14 w-14 translate-x-[30%] translate-y-[30%] place-items-center rounded-full bg-navy text-emerald-soft shadow-lift ring-4 ring-surface transition-transform duration-300 group-hover:scale-110">
-                    {service.number === "01" ? (
-                      <Home className="h-6 w-6" strokeWidth={1.6} />
-                    ) : service.number === "02" ? (
-                      <Sparkles className="h-6 w-6" strokeWidth={1.6} />
-                    ) : service.number === "03" ? (
-                      <Truck className="h-6 w-6" strokeWidth={1.6} />
-                    ) : (
-                      <CalendarDays className="h-6 w-6" strokeWidth={1.6} />
-                    )}
-                  </span>
-                </div>
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#176B3A]" />
+                  <span>{task}</span>
+                </li>
               ))}
-            </div>
+            </ul>
+
+            <a
+              href="#quote"
+              className="mt-6 inline-flex w-fit items-center justify-center rounded-full border border-[#17452F]/20 bg-[#176B3A] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#12552D]"
+            >
+              Check Availability
+            </a>
           </div>
-        </section>
 
-        {/* SECTION: WORKPLACE AREA CHECKLIST */}
-        <section className="py-16 md:py-24">
-          <div className="container-site">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="eyebrow">Area by Area</p>
-              <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
-                What Gets Cleaned at Your Workplace?
-              </h2>
-              <p className="mt-4 leading-7 text-muted-foreground">
-                Here's a closer look at the everyday tasks that can be part
-                of your commercial cleaning checklist.
+          <div className="pointer-events-none absolute inset-0 rounded-[1.6rem] ring-1 ring-inset ring-white/40" />
+        </article>
+      ))}
+    </div>
+
+    <p className="mt-7 text-center text-xs leading-6 text-[#52675B]">
+      Final tasks depend on the selected service, property condition
+      and agreed workplace cleaning checklist.
+    </p>
+  </div>
+</section>
+
+
+{/* SECTION: ADD-ONS */}
+<section className="relative isolate overflow-hidden bg-[#F2F6F2] py-20 md:py-28">
+  {/* Decorative house watermark */}
+  <div
+    aria-hidden="true"
+    className="pointer-events-none absolute -left-8 top-0 -z-10 h-[420px] w-[650px] max-w-[65%] text-[#176B3A]/10"
+  >
+    <svg
+      viewBox="0 0 600 420"
+      fill="none"
+      className="h-full w-full"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M55 210L290 25L525 210"
+        stroke="currentColor"
+        strokeWidth="28"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M115 165V370H465V165"
+        stroke="currentColor"
+        strokeWidth="22"
+        strokeLinejoin="round"
+      />
+      <rect x="260" y="215" width="30" height="30" rx="5" fill="currentColor" />
+      <rect x="300" y="215" width="30" height="30" rx="5" fill="currentColor" />
+      <rect x="260" y="255" width="30" height="30" rx="5" fill="currentColor" />
+      <rect x="300" y="255" width="30" height="30" rx="5" fill="currentColor" />
+    </svg>
+  </div>
+
+  {/* Decorative sparkles */}
+  <div className="pointer-events-none absolute left-[45%] top-12 -z-10 text-[#176B3A]/10">
+    <Sparkles className="h-14 w-14" />
+  </div>
+  <div className="pointer-events-none absolute left-[49%] top-28 -z-10 text-[#176B3A]/10">
+    <Sparkles className="h-9 w-9" />
+  </div>
+
+  <div className="container-site relative z-10 grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+    {/* Left content */}
+    <div>
+      <p className="flex items-center gap-3 text-sm font-bold tracking-wide text-[#176B3A]">
+        <span className="h-[2px] w-12 rounded-full bg-[#176B3A]" />
+        Additional Details
+      </p>
+
+      <h2 className="mt-5 text-4xl font-semibold tracking-tight text-[#17452F] sm:text-5xl md:text-6xl md:leading-[1.1]">
+        Need a Little Extra Attention?
+      </h2>
+
+      <p className="mt-6 max-w-lg text-base leading-8 text-[#52675B] sm:text-lg">
+        Some workplace areas need more time and specialized attention.
+        Ask about these additional tasks when preparing your commercial
+        cleaning quote.
+      </p>
+
+      <a
+        href="#quote"
+        className="group mt-8 inline-flex items-center gap-4 rounded-full bg-gradient-to-r from-[#176B3A] to-[#17452F] px-8 py-4 text-base font-bold text-white shadow-[0_12px_28px_rgba(23,107,58,0.22)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_35px_rgba(23,107,58,0.30)]"
+      >
+        Add to My Cleaning Plan
+        <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+      </a>
+    </div>
+
+    {/* Right glass cards */}
+    <div className="grid gap-4 sm:grid-cols-2">
+      {addOns.map((item, index) => (
+        <div
+          key={item.title}
+          className="group relative flex min-h-[88px] items-center gap-4 overflow-hidden rounded-[1.5rem] border border-[#176B3A]/10 bg-white/55 px-4 py-4 shadow-[0_8px_25px_rgba(23,69,47,0.045)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[#176B3A]/30 hover:bg-white/80 hover:shadow-[0_14px_30px_rgba(23,69,47,0.12)] sm:px-5"
+        >
+          {/* Soft glass highlight */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-green-100/30" />
+
+          {/* Green icon circle */}
+          <span className="relative grid h-14 w-14 shrink-0 place-items-center rounded-full border border-[#DDEFE3] bg-gradient-to-br from-[#F2F8F3] to-[#DDEFE3] text-[#176B3A] shadow-[0_4px_14px_rgba(23,107,58,0.08)] transition-transform duration-300 group-hover:scale-110">
+            {index === 0 ? (
+              <PanelsTopLeft className="h-6 w-6" />
+            ) : index === 1 ? (
+              <Armchair className="h-6 w-6" />
+            ) : index === 2 ? (
+              <Layers className="h-6 w-6" />
+            ) : index === 3 ? (
+              <Wind className="h-6 w-6" />
+            ) : index === 4 ? (
+              <Refrigerator className="h-6 w-6" />
+            ) : (
+              <DoorClosed className="h-6 w-6" />
+            )}
+          </span>
+
+          {/* Add-on title */}
+          <span className="relative flex-1 text-sm font-bold leading-5 text-[#17452F] sm:text-[15px]">
+            {item.title}
+          </span>
+
+          {/* Arrow circle */}
+          <span
+            aria-hidden="true"
+            className="relative grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#DDEFE3] bg-[#DDEFE3]/80 text-[#176B3A] transition-all duration-300 group-hover:border-[#176B3A] group-hover:bg-[#176B3A] group-hover:text-white"
+          >
+            <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5" />
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* SECTION: CLEANING FREQUENCY */}
+<section className="relative overflow-hidden bg-[#F2F6F2] py-16 md:py-24">
+  {/* Soft background glow */}
+  <div className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-[#176B3A]/15 blur-[100px]" />
+  <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-[#B8DCC3]/30 blur-[110px]" />
+
+  <div className="container-site relative z-10">
+    {/* Section heading */}
+    <div className="mx-auto max-w-2xl text-center">
+      <p className="eyebrow">Your Schedule</p>
+
+      <h2 className="mt-3 text-3xl font-medium text-[#17452F] sm:text-4xl">
+        How Often Does Your Workplace Need Cleaning?
+      </h2>
+
+      <p className="mt-4 leading-7 text-[#52675B]">
+        Choose a cleaning schedule that works for your business.
+      </p>
+    </div>
+
+    {/* Cleaning frequency cards */}
+    <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {frequencies.map((frequency, index) => {
+        const isWeekly = frequency.title.toLowerCase().includes("weekly");
+        const isOneTime = frequency.title.toLowerCase().includes("one-time");
+
+        return (
+          <article
+            key={frequency.title}
+            className={`group relative flex min-h-[300px] flex-col overflow-hidden rounded-[1.8rem] border p-7 backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 ${
+              isWeekly
+                ? "border-[#DDEFE3] bg-white text-[#17452F] shadow-[0_12px_35px_rgba(23,69,47,0.08)] hover:border-[#176B3A]/30 hover:shadow-[0_20px_40px_rgba(23,69,47,0.12)]"
+                : isOneTime
+                  ? "border-[#B8DCC3]/60 bg-gradient-to-br from-[#176B3A] via-[#185B38] to-[#17452F] text-white shadow-[0_20px_45px_rgba(23,69,47,0.20)] hover:shadow-[0_25px_50px_rgba(23,69,47,0.30)]"
+                  : index === 3
+                    ? "border-white bg-white text-[#17452F] shadow-[0_12px_35px_rgba(23,69,47,0.08)] hover:border-[#176B3A]/30 hover:shadow-[0_20px_40px_rgba(23,69,47,0.12)]"
+                    : "border-[#B8DCC3]/60 bg-gradient-to-br from-[#176B3A] via-[#185B38] to-[#17452F] text-white shadow-[0_20px_45px_rgba(23,69,47,0.20)] hover:shadow-[0_25px_50px_rgba(23,69,47,0.30)]"
+            }`}
+          >
+            {/* Glass highlight */}
+            <div className="pointer-events-none absolute inset-0 rounded-[1.7rem] bg-gradient-to-br from-white/20 via-transparent to-green-100/10" />
+
+            {/* Icon */}
+            <div
+              className={`relative grid h-14 w-14 place-items-center rounded-full border shadow-sm transition-transform duration-500 group-hover:scale-110 ${
+                isWeekly || (!isOneTime && index === 3)
+                  ? "border-[#DDEFE3] bg-[#DDEFE3] text-[#176B3A]"
+                  : "border-white/70 bg-white text-[#176B3A]"
+              }`}
+            >
+              {index === 0 ? (
+                <Clock3 className="h-6 w-6" />
+              ) : index === 1 ? (
+                <CalendarDays className="h-6 w-6" />
+              ) : index === 2 ? (
+                <Home className="h-6 w-6" />
+              ) : (
+                <Sparkles className="h-6 w-6" />
+              )}
+            </div>
+
+            {/* Card content */}
+            <div className="relative mt-8">
+              <h3
+                className={`text-xl font-bold tracking-tight ${
+                  isWeekly || (!isOneTime && index === 3)
+                    ? "text-[#17452F]"
+                    : "text-white"
+                }`}
+              >
+                {frequency.title}
+              </h3>
+
+              <p
+                className={`mt-3 text-sm font-medium leading-6 ${
+                  isWeekly || (!isOneTime && index === 3)
+                    ? "text-[#52675B]"
+                    : "text-white/85"
+                }`}
+              >
+                {frequency.text}
               </p>
             </div>
-                        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {roomChecklist.map((room) => (
-                <article
-                  key={room.title}
-                  className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-soft"
-                >
-                  <img
-                    src={room.image}
-                    alt={`${room.title} cleaning`}
-                    className="h-48 w-full object-cover"
-                  />
-                  <div className="p-5">
-                    <h3 className="text-xl font-semibold text-emerald">
-                      {room.title}
-                    </h3>
-                    <ul className="mt-4 space-y-3">
-                      {room.tasks.map((task) => (
-                        <li
-                          key={task}
-                          className="flex items-start gap-2 text-sm font-medium leading-5 text-foreground"
-                        >
-                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald" />
-                          {task}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              ))}
-            </div>
 
-            <p className="mt-7 text-center text-xs leading-6 text-muted-foreground">
-              Final tasks depend on the selected service, property condition
-              and agreed workplace cleaning checklist.
+            {/* Bottom label and arrow */}
+            <div className="relative mt-auto flex items-center justify-between gap-3 pt-8">
+              <span
+                className={`text-[11px] font-bold uppercase tracking-[0.16em] ${
+                  isWeekly || (!isOneTime && index === 3)
+                    ? "text-[#52675B]/75"
+                    : "text-white/70"
+                }`}
+              >
+                0{index + 1} / {frequency.title}
+              </span>
+
+              <span
+                aria-hidden="true"
+                className={`grid h-11 w-11 shrink-0 place-items-center rounded-full border transition-all duration-300 group-hover:translate-x-1 ${
+                  isWeekly || (!isOneTime && index === 3)
+                    ? "border-[#176B3A]/20 bg-[#DDEFE3] text-[#176B3A] group-hover:border-[#176B3A] group-hover:bg-[#176B3A] group-hover:text-white"
+                    : "border-white/40 bg-white/10 text-white group-hover:bg-white group-hover:text-[#176B3A]"
+                }`}
+              >
+                <span className="text-xl leading-none">↗</span>
+              </span>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+{/* SECTION: HOW IT WORKS */}
+<section id="how-it-works" className="relative overflow-hidden bg-white py-16 md:py-24">
+  <div className="container-site relative">
+    {/* Section heading */}
+    <div className="mx-auto max-w-3xl text-center">
+      <p className="flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#176B3A]">
+        <span className="h-px w-12 bg-[#176B3A]" />
+        Simple Process
+        <span className="h-px w-12 bg-[#176B3A]" />
+      </p>
+
+      <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight text-[#17452F] sm:text-5xl md:text-6xl">
+        Getting Started Is Easy
+      </h2>
+
+      <p className="mt-5 text-base leading-7 text-[#52675B] sm:text-lg">
+        Follow these simple steps to book your deep cleaning service.
+      </p>
+    </div>
+
+    {/* Cards and connecting line */}
+    <div className="relative mt-16 md:mt-20">
+      {/* Dashed connecting path */}
+      <svg
+        aria-hidden="true"
+        className="pointer-events-none absolute left-0 top-8 z-0 hidden h-40 w-full overflow-visible xl:block"
+        viewBox="0 0 1200 160"
+        fill="none"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M70 35 C180 -20 210 120 330 85 S510 5 620 75 S810 135 920 55 S1080 5 1140 65"
+          stroke="#A8CDB3"
+          strokeWidth="3"
+          strokeDasharray="10 10"
+          strokeLinecap="round"
+        />
+      </svg>
+
+      <div className="relative z-10 grid gap-10 sm:grid-cols-2 xl:grid-cols-4 xl:gap-7">
+        {[
+          {
+            number: "01",
+            title: "Tell Us What Needs Attention",
+            text: "Share your home details and the areas you want deep cleaned.",
+            icon: Home,
+            rotate: "xl:-rotate-2",
+          },
+          {
+            number: "02",
+            title: "Receive Your Estimate",
+            text: "Get an estimate based on your home's needs and requested tasks.",
+            icon: Calculator,
+            rotate: "xl:rotate-2 xl:translate-y-8",
+          },
+          {
+            number: "03",
+            title: "Choose a Date",
+            text: "Discuss an available date and a convenient time for your visit.",
+            icon: CalendarDays,
+            rotate: "xl:-rotate-2 xl:translate-y-2",
+          },
+          {
+            number: "04",
+            title: "Enjoy a Detailed Clean",
+            text: "Your agreed cleaning checklist guides the cleaning visit.",
+            icon: Sparkles,
+            rotate: "xl:rotate-2 xl:translate-y-5",
+          },
+        ].map((step) => {
+          const Icon = step.icon;
+
+          return (
+            <article
+              key={step.number}
+              className={`group relative mx-auto w-full max-w-[191px] transition-all duration-500 hover:-translate-y-2 hover:rotate-0 ${step.rotate}`}
+            >
+              {/* Pin */}
+              <div className="absolute -top-5 left-1/2 z-20 -translate-x-1/2 scale-75">
+                <div className="relative mx-auto h-11 w-9">
+                  <span className="absolute bottom-0 left-1/2 h-5 w-5 -translate-x-1/2 rounded-full bg-[#17452F] shadow-[0_5px_8px_rgba(23,69,47,0.30)]" />
+                  <span className="absolute left-1/2 top-0 h-8 w-8 -translate-x-1/2 rounded-full border border-[#A8CDB3] bg-gradient-to-br from-[#A8CDB3] via-[#176B3A] to-[#17452F] shadow-[0_5px_10px_rgba(23,69,47,0.35)]" />
+                  <span className="absolute left-[9px] top-[5px] h-2 w-2 rounded-full bg-white/70 blur-[1px]" />
+                </div>
+              </div>
+
+              {/* Note card */}
+              <div className="relative min-h-[233px] overflow-hidden rounded-[1.7rem] border-[5px] border-white bg-gradient-to-br from-white via-[#F7FAF7] to-[#EAF3EC] p-5 pt-9 shadow-[0_18px_35px_rgba(23,69,47,0.12)] ring-1 ring-[#DCE9DE] transition-all duration-500 group-hover:shadow-[0_24px_45px_rgba(23,69,47,0.18)]">
+                {/* Inner border */}
+                <div className="pointer-events-none absolute inset-2 rounded-[1.3rem] border border-[#DCE9DE]" />
+
+                {/* Card icon */}
+                <span className="absolute right-5 top-6 grid h-10 w-10 place-items-center rounded-xl border border-[#DCE9DE] bg-white text-[#176B3A] shadow-[0_5px_15px_rgba(23,69,47,0.10)] transition-transform duration-300 group-hover:scale-110">
+                  <Icon className="h-5 w-5" strokeWidth={1.8} />
+                </span>
+
+                {/* Number */}
+                <span className="relative block font-display text-4xl font-bold tracking-tight text-[#176B3A]">
+                  {step.number}
+                </span>
+
+                {/* Text */}
+                <h3 className="relative mt-4 max-w-[175px] text-base font-bold leading-snug text-[#17452F]">
+                  {step.title}
+                </h3>
+
+                <p className="relative mt-3 text-xs font-medium leading-6 text-[#52675B]">
+                  {step.text}
+                </p>
+
+                {/* Bottom accent */}
+                <span className="absolute bottom-5 left-5 h-[3px] w-11 rounded-full bg-gradient-to-r from-[#176B3A] to-[#A8CDB3]" />
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* SECTION: WHY FRESHSPACE */}
+<section className="relative overflow-hidden bg-[#F2F6F2] py-16 md:py-24">
+  {/* Soft green background glow */}
+  <div className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-[#176B3A]/15 blur-[110px]" />
+  <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-[#B8DCC3]/30 blur-[120px]" />
+
+  <div className="container-site relative z-10">
+    {/* Section heading */}
+    <div className="mx-auto max-w-2xl text-center">
+      <p className="eyebrow">The FreshSpace Approach</p>
+
+      <h2 className="mt-3 text-3xl font-medium text-[#17452F] sm:text-4xl">
+        More Attention to Every Detail
+      </h2>
+
+      <p className="mt-4 leading-7 text-[#52675B]">
+        A thoughtful deep cleaning experience starts with a clear
+        plan and an understanding of what matters in your home.
+      </p>
+    </div>
+
+    {/* Glass cards */}
+    <div className="mt-12 grid gap-6 md:grid-cols-3">
+      {[
+        {
+          icon: Home,
+          title: "Focused on Your Space",
+          text: "Choose the rooms and areas that need the most attention.",
+        },
+        {
+          icon: Sparkles,
+          title: "Detailed Cleaning Tasks",
+          text: "Give commonly overlooked surfaces and built-up dirt extra attention.",
+        },
+        {
+          icon: ShieldCheck,
+          title: "Clear Expectations",
+          text: "Understand which tasks are included in your agreed cleaning checklist.",
+        },
+      ].map(({ icon: Icon, title, text }, index) => (
+        <article
+          key={title}
+          className={`group relative flex min-h-[290px] flex-col overflow-hidden rounded-[1.8rem] border p-7 backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 ${
+            index === 0
+              ? "border-white bg-white text-[#17452F] shadow-[0_14px_35px_rgba(23,69,47,0.09)] hover:border-[#B8DCC3] hover:shadow-[0_22px_45px_rgba(23,69,47,0.13)]"
+              : "border-[#B8DCC3]/70 bg-gradient-to-br from-[#176B3A] via-[#185B38] to-[#17452F] text-white shadow-[0_20px_45px_rgba(23,69,47,0.22)] hover:shadow-[0_25px_50px_rgba(23,69,47,0.30)]"
+          }`}
+        >
+          {/* Glass highlight */}
+          <div className="pointer-events-none absolute inset-0 rounded-[1.7rem] bg-gradient-to-br from-white/20 via-transparent to-green-100/10" />
+
+          {/* Icon */}
+          <div
+            className={`relative grid h-14 w-14 place-items-center rounded-full border shadow-sm transition-transform duration-500 group-hover:scale-110 ${
+              index === 0
+                ? "border-[#DDEFE3] bg-[#DDEFE3] text-[#176B3A]"
+                : "border-white/80 bg-white text-[#176B3A]"
+            }`}
+          >
+            <Icon className="h-6 w-6" />
+          </div>
+
+          {/* Content */}
+          <div className="relative mt-8">
+            <h3
+              className={`text-xl font-bold tracking-tight ${
+                index === 0 ? "text-[#17452F]" : "text-white"
+              }`}
+            >
+              {title}
+            </h3>
+
+            <p
+              className={`mt-3 text-sm font-semibold leading-7 ${
+                index === 0 ? "text-[#52675B]" : "text-white/90"
+              }`}
+            >
+              {text}
             </p>
           </div>
-        </section>
 
-        {/* SECTION: ADD-ONS */}
-        <section className="bg-navy py-16 text-navy-foreground md:py-20">
-          <div className="container-site grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <p className="eyebrow">Extra Attention</p>
-              <h2 className="mt-3 text-3xl font-medium sm:text-4xl">
-                Want a Little More?
-              </h2>
-              <p className="mt-5 max-w-lg leading-7 text-navy-foreground/75">
-                Add extra cleaning tasks to your plan when your workplace needs
-                more attention. These options can be discussed while preparing
-                your quote.
-              </p>
-              <a
-                href="#quote"
-                className="mt-7 inline-flex items-center gap-2 rounded-full bg-emerald px-6 py-3 font-semibold text-primary-foreground transition hover:bg-emerald-dark"
-              >
-                Customize My Cleaning Plan
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
+          {/* Bottom decorative detail */}
+          <div className="relative mt-auto flex items-center justify-between pt-7">
+            <span
+              className={`h-[3px] w-12 rounded-full ${
+                index === 0 ? "bg-[#176B3A]/70" : "bg-white/90"
+              }`}
+            />
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              {addOns.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-3 rounded-xl border border-navy-foreground/15 bg-navy-foreground/5 p-4"
-                >
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-emerald/15 text-emerald-bright">
-                    <Sparkles className="h-4 w-4" />
-                  </span>
-                  <span className="text-sm font-medium">{item}</span>
-                </div>
-              ))}
-            </div>
+            <span
+              aria-hidden="true"
+              className={`grid h-10 w-10 place-items-center rounded-full border text-xl transition-all duration-300 group-hover:translate-x-1 ${
+                index === 0
+                  ? "border-[#176B3A]/25 bg-[#DDEFE3] text-[#176B3A] group-hover:bg-[#176B3A] group-hover:text-white"
+                  : "border-white/50 bg-white/10 text-white group-hover:bg-white group-hover:text-[#176B3A]"
+              }`}
+            >
+              ↗
+            </span>
           </div>
-        </section>
-
-        {/* SECTION: CLEANING FREQUENCY */}
-        <section className="bg-white py-16 md:py-20">
-          <div className="container-site">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="eyebrow">Your Schedule</p>
-              <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
-                How Often Does Your Workplace Need Cleaning?
-              </h2>
-              <p className="mt-4 leading-7 text-muted-foreground">
-                Choose a cleaning schedule that works for your business.
-              </p>
-            </div>
-
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {frequencies.map((frequency, index) => (
-                <div
-                  key={frequency.title}
-                  className="rounded-2xl border border-border bg-background p-6 text-center transition hover:border-emerald/50 hover:shadow-soft"
-                >
-                  <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-emerald-soft text-emerald">
-                    {index === 0 ? (
-                      <Clock3 className="h-5 w-5" />
-                    ) : index === 1 ? (
-                      <CalendarDays className="h-5 w-5" />
-                    ) : index === 2 ? (
-                      <Home className="h-5 w-5" />
-                    ) : (
-                      <Sparkles className="h-5 w-5" />
-                    )}
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold text-navy">
-                    {frequency.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    {frequency.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION: HOW IT WORKS */}
-        <section id="how-it-works" className="py-16 md:py-20">
-          <div className="container-site">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="eyebrow">Simple Process</p>
-              <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
-                Getting Started Is Easy
-              </h2>
-            </div>
-
-            <div className="mt-12 grid gap-8 md:grid-cols-4">
-              {[
-                {
-                  number: "01",
-                  title: "Tell Us About Your Workplace",
-                  text: "Share your business details and the cleaning help you need.",
-                },
-                {
-                  number: "02",
-                  title: "Receive Your Estimate",
-                  text: "Get a personalized estimate based on your requirements.",
-                },
-                {
-                  number: "03",
-                  title: "Choose a Schedule",
-                  text: "Discuss an available date and a convenient time.",
-                },
-                {
-                  number: "04",
-                  title: "Enjoy a Fresh Workplace",
-                  text: "Your agreed cleaning checklist guides the visit.",
-                },
-              ].map((step) => (
-                <div key={step.number} className="relative text-center">
-                  <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-emerald-soft font-display text-xl font-semibold text-emerald">
-                    {step.number}
-                  </span>
-                  <h3 className="mt-5 text-xl font-medium text-navy">
-                    {step.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                    {step.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION: WHY FRESHSPACE */}
-        <section className="bg-white py-16 md:py-20">
-          <div className="container-site">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="eyebrow">The FreshSpace Approach</p>
-              <h2 className="mt-3 text-3xl font-medium text-navy sm:text-4xl">
-                Thoughtful Cleaning, Made Simple
-              </h2>
-              <p className="mt-4 leading-7 text-muted-foreground">
-                A good cleaning experience starts with understanding what
-                matters most in your workplace.
-              </p>
-            </div>
-
-            <div className="mt-10 grid gap-5 md:grid-cols-3">
-              {[
-                {
-                  icon: Home,
-                  title: "Made for Your Workplace",
-                  text: "Cleaning tasks can be discussed and tailored to your facility and priorities.",
-                },
-                {
-                  icon: CalendarDays,
-                  title: "Flexible Scheduling",
-                  text: "Explore recurring or one-time cleaning options around your operating schedule.",
-                },
-                {
-                  icon: ShieldCheck,
-                  title: "Clear Expectations",
-                  text: "Know which tasks are included in your agreed workplace cleaning checklist.",
-                },
-              ].map(({ icon: Icon, title, text }) => (
-                <div
-                  key={title}
-                  className="rounded-2xl border border-border/70 bg-background p-7 text-center"
-                >
-                  <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-emerald-soft text-emerald">
-                    <Icon className="h-6 w-6" />
-                  </span>
-                  <h3 className="mt-5 text-xl font-medium text-navy">
-                    {title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                    {text}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
 
         {/* SECTION: CUSTOMER REVIEWS */}
         <section
